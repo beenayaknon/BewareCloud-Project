@@ -1,4 +1,18 @@
 import 'package:flutter/material.dart';
+import 'views/activity_addactivity.dart';
+import 'views/activity_list.dart';
+import 'views/activity_show.dart';
+import 'views/activity.dart';
+import 'views/home.dart';
+import 'views/login.dart';
+import 'views/user_setting_language.dart';
+import 'views/user_setting_notification.dart';
+import 'views/user_setting.dart';
+import 'views/user.dart';
+import 'views/weather_search_show.dart';
+import 'views/weather_search.dart';
+import 'views/weather_show.dart';
+import 'views/weather.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,7 +25,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'BewareCloud',
+      initialRoute: '/',
+      routes: {
+        '/': (context) => LoginPage(),
+        '/ActivityAdd': (context) => ActivityAddPage(),
+        '/ActivityList': (context) => ActivityListPage(),
+        '/ActivityShow': (context) => ActivityShowPage(),
+        '/Activity': (context) => ActivityPage(),
+        '/Home': (context) => HomePage(),
+        '/Login': (context) => LoginPage(),
+        '/UserSettingLanguage': (context) => UserSettingLanguagePage(),
+        '/UserSettingNotification': (context) => UserSettingNotificationPage(),
+        '/UserSetting': (context) => UserSettingPage(),
+        '/User': (context) => UserPage(),
+        '/WeatherShow': (context) => WeatherShowPage(),
+        '/WeatherSearch': (context) => WeatherSearchPage(),
+        '/Weather': (context) => WeatherPage(),
+      },
       theme: ThemeData(
         // This is the theme of your application.
         //
