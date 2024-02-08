@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class WeatherShowPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,7 +8,10 @@ class LoginPage extends StatelessWidget {
         title: Text('Show Weather'),
       ),
       body: Center(
-        //0w0
+        child: ElevatedButton(
+          child: Text("back"),
+          onPressed: () { Navigator.pushReplacementNamed(context, '/Weather'); },
+        ),
       ),
     );
   }

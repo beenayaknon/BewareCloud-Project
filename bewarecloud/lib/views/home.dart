@@ -3,7 +3,7 @@ import 'activity.dart';
 import 'user.dart';
 import 'weather.dart';
 
-class LoginPage extends StatelessWidget {
+class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -16,15 +16,19 @@ class LoginPage extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               child: Text("activity page"),
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => ActivityPage())),
+              onPressed: () { Navigator.pushReplacementNamed(context, '/Activity'); },
             ),
             ElevatedButton(
-              child: Text("user page"),
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => UserPage())),
+              child: Text("home page"),
+              onPressed: () { Navigator.pushReplacementNamed(context, '/Home'); },
             ),
             ElevatedButton(
               child: Text("weather page"),
-              onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => WeatherPage())),
+              onPressed: () { Navigator.pushReplacementNamed(context, '/Weather'); },
+            ),
+            ElevatedButton(
+              child: Text("user page"),
+              onPressed: () { Navigator.pushReplacementNamed(context, '/User'); },
             ),
           ],
         ),

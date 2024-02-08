@@ -11,7 +11,9 @@ class LoginPage extends StatelessWidget {
       body: Center(
         child: ElevatedButton(
           child: Text("Continue with Google"),
-          onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (context) => HomePage())),
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/Home');
+          },
         ),
         
       ),

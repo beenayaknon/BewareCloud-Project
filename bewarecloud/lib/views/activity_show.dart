@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class ActivityShowPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,7 +8,23 @@ class LoginPage extends StatelessWidget {
         title: Text('Show Activity'),
       ),
       body: Center(
-        //0w0
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              child: Text("back"),
+              onPressed: () { Navigator.pushReplacementNamed(context, '/ActivityList'); },
+            ),
+            ElevatedButton(
+              child: Text("delete"),
+              onPressed: () { Navigator.pushReplacementNamed(context, '/ActivityList'); },
+            ),
+            ElevatedButton(
+              child: Text("edit"),
+              onPressed: () { Navigator.pushReplacementNamed(context, '/ActivityAdd'); },
+            ),
+          ],
+        ),
       ),
     );
   }

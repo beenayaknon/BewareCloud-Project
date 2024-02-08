@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/User': (context) => UserPage(),
         '/WeatherShow': (context) => WeatherShowPage(),
         '/WeatherSearch': (context) => WeatherSearchPage(),
+        '/WeatherSearchShow': (context) => WeatherSearchShowPage(),
         '/Weather': (context) => WeatherPage(),
       },
       theme: ThemeData(
@@ -62,7 +63,6 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
 }

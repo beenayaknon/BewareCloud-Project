@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class LoginPage extends StatelessWidget {
+class UserSettingLanguagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -8,7 +8,15 @@ class LoginPage extends StatelessWidget {
         title: Text('Setting Language'),
       ),
       body: Center(
-        //0w0
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            ElevatedButton(
+              child: Text("back"),
+              onPressed: () { Navigator.pushReplacementNamed(context, '/UserSetting'); },
+            ),
+          ],
+        ),
       ),
     );
   }
