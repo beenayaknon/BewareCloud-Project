@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 
-class WeatherShowPage extends StatelessWidget {
+class WeatherSearchResultPage extends StatelessWidget {
+  final String keyword;
+  final TextEditingController _searchController = TextEditingController();
+
+  WeatherSearchResultPage({required this.keyword});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Weather'),
+          title: Text('Search Result'),
           leading: IconButton(
             icon: Icon(Icons.arrow_back),
             onPressed: () {
@@ -19,15 +24,35 @@ class WeatherShowPage extends StatelessWidget {
             Padding(
               padding: EdgeInsets.fromLTRB(20, 10, 20, 10),
               child: TextField(
+                controller: _searchController,
                 decoration: InputDecoration(
                   hintText: 'Search for a city',
                   prefixIcon: Icon(Icons.search, color: Colors.grey),
                   filled: true,
-                  fillColor: Color.fromARGB(255, 238, 238, 238),
+                  fillColor: const Color.fromARGB(255, 238, 238, 238),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(20.0),
                     borderSide: BorderSide.none,
                   ),
+                ),
+                onSubmitted: (value) {
+                  String keyword = _searchController.text.trim();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) =>
+                          WeatherSearchResultPage(keyword: keyword),
+                    ),
+                  );
+                },
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.fromLTRB(20, 0, 20, 10),
+              child: Text(
+                'Search Result for: $keyword',
+                style: TextStyle(
+                  fontSize: 18,
                 ),
               ),
             ),
@@ -37,15 +62,12 @@ class WeatherShowPage extends StatelessWidget {
                 padding: const EdgeInsets.fromLTRB(2.0, 10.0, 2.0, 10.0),
                 children: <Widget>[
                   ProductBox(
-                    name: "Cloudy",
-                    location: "Bangkok",
-                    degree: 33,
+                    name: "Rainy",
+                    location: "Nakhon Pathom",
+                    degree: 28,
                     isNetworkImage: false,
-                    image: "cloudy.jpeg",
-                    onDelete: () {
-                      // Implement delete functionality here
-                      print("Delete button pressed for Cloudy");
-                    },
+                    image: "rain.jpeg",
+                    onAddToFavorites: () {},
                   ),
                   ProductBox(
                     name: "Sunny",
@@ -53,10 +75,7 @@ class WeatherShowPage extends StatelessWidget {
                     degree: 35,
                     isNetworkImage: false,
                     image: "sunny.jpeg",
-                    onDelete: () {
-                      // Implement delete functionality here
-                      print("Delete button pressed for Sunny");
-                    },
+                    onAddToFavorites: () {},
                   ),
                 ],
               ),
@@ -116,7 +135,7 @@ class ProductBox extends StatelessWidget {
     required this.degree,
     required this.isNetworkImage,
     required this.image,
-    required this.onDelete,
+    required this.onAddToFavorites,
   }) : super(key: key);
 
   final String name;
@@ -124,7 +143,7 @@ class ProductBox extends StatelessWidget {
   final int degree;
   final bool isNetworkImage;
   final String image;
-  final VoidCallback onDelete;
+  final VoidCallback onAddToFavorites;
 
   @override
   Widget build(BuildContext context) {
@@ -189,16 +208,16 @@ class ProductBox extends StatelessWidget {
                     ),
                   ),
                   TextButton(
-                    onPressed: onDelete,
+                    onPressed: onAddToFavorites,
                     child: Row(
                       children: [
                         Icon(
-                          Icons.delete,
+                          Icons.favorite,
                           color: Colors.white,
                         ),
                         SizedBox(width: 4),
                         Text(
-                          'Delete this pin',
+                          'Pin this location',
                           style: TextStyle(color: Colors.white),
                         ),
                       ],

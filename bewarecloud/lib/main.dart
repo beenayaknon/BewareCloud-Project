@@ -13,6 +13,7 @@ import 'views/weather_search_show.dart';
 import 'views/weather_search.dart';
 import 'views/weather_show.dart';
 import 'views/weather.dart';
+import 'views/weather_search_result.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,6 +44,8 @@ class MyApp extends StatelessWidget {
         '/WeatherSearch': (context) => WeatherSearchPage(),
         '/WeatherSearchShow': (context) => WeatherSearchShowPage(),
         '/Weather': (context) => WeatherPage(),
+        '/WeatherSearchResult': (context) =>
+            WeatherSearchResultPage(keyword: 'keyword'),
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
