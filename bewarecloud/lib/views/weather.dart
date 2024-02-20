@@ -58,7 +58,7 @@ class WeatherPage extends StatefulWidget {
 }
 
 class _WeatherPageState extends State<WeatherPage> {
-  final String apiKey = 'dbc6ddcf06754a25bd1134032242002';
+  final String apiKey = '<API_KEY_WEATHERAPI>';
   final LocationService _locationService = LocationService();
   LocationData? _currentLocation;
   String _locationInfo = 'Fetching location...';
