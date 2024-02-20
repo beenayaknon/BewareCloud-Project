@@ -67,7 +67,7 @@ class WeatherPage extends StatelessWidget {
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.location_on),
-                label: 'Location',
+                label: 'Weather',
               ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.settings),
@@ -83,7 +83,7 @@ class WeatherPage extends StatelessWidget {
                   Navigator.pushReplacementNamed(context, '/Activity');
                   break;
                 case 2:
-                  Navigator.pushReplacementNamed(context, '/WeatherShow');
+                  Navigator.pushReplacementNamed(context, '/Weather');
                   break;
                 case 3:
                   Navigator.pushReplacementNamed(context, '/UserSetting');

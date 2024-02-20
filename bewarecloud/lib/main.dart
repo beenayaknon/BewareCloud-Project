@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+
 import 'views/activity_addactivity.dart';
 import 'views/activity_list.dart';
 import 'views/activity_show.dart';
@@ -9,14 +11,12 @@ import 'views/user_setting_language.dart';
 import 'views/user_setting_notification.dart';
 import 'views/user_setting.dart';
 import 'views/user.dart';
-import 'views/weather_search_show.dart';
-import 'views/weather_search.dart';
-import 'views/weather_show.dart';
 import 'views/weather.dart';
-import 'views/weather_search_result.dart';
 
 void main() {
-  runApp(const MyApp());
+  initializeDateFormatting('en_EN', null).then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {
@@ -40,12 +40,7 @@ class MyApp extends StatelessWidget {
         '/UserSettingNotification': (context) => UserSettingNotificationPage(),
         '/UserSetting': (context) => UserSettingPage(),
         '/User': (context) => UserPage(),
-        '/WeatherShow': (context) => WeatherShowPage(),
-        '/WeatherSearch': (context) => WeatherSearchPage(),
-        '/WeatherSearchShow': (context) => WeatherSearchShowPage(),
         '/Weather': (context) => WeatherPage(),
-        '/WeatherSearchResult': (context) =>
-            WeatherSearchResultPage(keyword: 'keyword'),
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

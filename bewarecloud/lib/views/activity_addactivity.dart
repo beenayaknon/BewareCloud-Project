@@ -13,11 +13,15 @@ class ActivityAddPage extends StatelessWidget {
           children: <Widget>[
             ElevatedButton(
               child: Text("back"),
-              onPressed: () { Navigator.pushReplacementNamed(context, '/ActivityList'); },
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/ActivityList');
+              },
             ),
             ElevatedButton(
               child: Text("add activity"),
-              onPressed: () { Navigator.pushReplacementNamed(context, '/Activity'); },
+              onPressed: () {
+                Navigator.pushReplacementNamed(context, '/Activity');
+              },
             ),
           ],
         ),
