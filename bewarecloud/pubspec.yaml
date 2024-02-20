@@ -34,7 +34,9 @@ dependencies:
   table_calendar:
   flutter_localizations:
     sdk: flutter
-  
+  http: ^0.13.3
+  location: ^4.3.0
+  geocoding: 
 
 
   # The following adds the Cupertino Icons font to your application.

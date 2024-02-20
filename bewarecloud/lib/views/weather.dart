@@ -1,50 +1,229 @@
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+import 'package:location/location.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
 
-class WeatherPage extends StatelessWidget {
+class LocationService {
+  Location location = Location();
+
+  Future<bool> requestPermission() async {
+    final permission = await location.requestPermission();
+    return permission == PermissionStatus.granted;
+  }
+
+  Future<LocationData> getCurrentLocation() async {
+    final serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      final result = await location.requestService();
+      if (!result) {
+        throw Exception('GPS service not enabled');
+      }
+    }
+
+    final locationData = await location.getLocation();
+    return locationData;
+  }
+
+  // Use this method to get the city name from location data
+  Future<String> getCityNameFromLocation(LocationData locationData) async {
+    try {
+      // Check if latitude and longitude are not null
+      if (locationData.latitude == null || locationData.longitude == null) {
+        return "Location data is incomplete";
+      }
+
+      List<geocoding.Placemark> placemarks =
+          await geocoding.placemarkFromCoordinates(
+        locationData.latitude!,
+        locationData.longitude!,
+      );
+
+      if (placemarks.isNotEmpty) {
+        geocoding.Placemark place = placemarks.first;
+        return "${place.locality}, ${place.country}";
+      } else {
+        return "Unknown location";
+      }
+    } catch (e) {
+      // Return or log the error message
+      return "Failed to get city name: $e";
+    }
+  }
+}
+
+class WeatherPage extends StatefulWidget {
+  @override
+  _WeatherPageState createState() => _WeatherPageState();
+}
+
+class _WeatherPageState extends State<WeatherPage> {
+  final String apiKey = 'dbc6ddcf06754a25bd1134032242002';
+  final LocationService _locationService = LocationService();
+  LocationData? _currentLocation;
+  String _locationInfo = 'Fetching location...';
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchLocationAndCity();
+  }
+
+  Future<void> _fetchLocationAndCity() async {
+    bool permissionGranted = await _locationService.requestPermission();
+    if (permissionGranted) {
+      try {
+        LocationData locationData = await _locationService.getCurrentLocation();
+        // Check if latitude and longitude are not null
+        if (locationData.latitude != null && locationData.longitude != null) {
+          String cityName =
+              await _locationService.getCityNameFromLocation(locationData);
+          setState(() {
+            _currentLocation = locationData;
+            _locationInfo = cityName; // Now storing the city name
+          });
+        } else {
+          setState(() {
+            _locationInfo = "Location data incomplete";
+          });
+        }
+      } catch (e) {
+        setState(() {
+          _locationInfo = "Failed to get location: $e";
+        });
+      }
+    } else {
+      setState(() {
+        _locationInfo = "Location permission not granted";
+      });
+    }
+  }
+
+  final String city = 'Bangkok';
+  // Fetch current weather data
+  Future<Map<String, dynamic>> fetchCurrentWeather() async {
+    final url = Uri.parse(
+        'https://api.weatherapi.com/v1/current.json?key=$apiKey&q=$city&aqi=no');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load current weather data');
+    }
+  }
+
+  // Fetch weather forecast data
+  Future<Map<String, dynamic>> fetchWeatherForecast() async {
+    final url = Uri.parse(
+        'https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$city&days=3&aqi=no');
+    final response = await http.get(url);
+    if (response.statusCode == 200) {
+      return json.decode(response.body);
+    } else {
+      throw Exception('Failed to load weather forecast data');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Weather'),
+          title: Text('Weather Info'),
         ),
-        body: Center(
+        body: SingleChildScrollView(
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                child: Text("search bar"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/WeatherSearch');
+            children: [
+              Text(_locationInfo),
+              FutureBuilder<Map<String, dynamic>>(
+                future: fetchCurrentWeather(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text(
+                        'Error fetching current weather: ${snapshot.error}');
+                  } else {
+                    // Assuming data is returned in the desired format
+                    var currentWeather = snapshot.data!;
+                    var location = currentWeather['location']['name'];
+                    var tempC = currentWeather['current']['temp_c'];
+                    var windKph = currentWeather['current']['wind_kph'];
+                    var pressureMb = currentWeather['current']['pressure_mb'];
+                    var humidity = currentWeather['current']['humidity'];
+                    var condition =
+                        currentWeather['current']['condition']['text'];
+
+// Displaying the current weather data
+                    return Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text('Location: $location',
+                              style: TextStyle(fontSize: 20)),
+                          Text('Temperature: $tempC°C',
+                              style: TextStyle(fontSize: 20)),
+                          Text('Wind: $windKph kph',
+                              style: TextStyle(fontSize: 20)),
+                          Text('Pressure: $pressureMb mb',
+                              style: TextStyle(fontSize: 20)),
+                          Text('Humidity: $humidity%',
+                              style: TextStyle(fontSize: 20)),
+                          Text('$condition', style: TextStyle(fontSize: 20)),
+                        ],
+                      ),
+                    );
+                  }
+                  return Container();
                 },
               ),
-              ElevatedButton(
-                child: Text("weather show"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/WeatherShow');
-                },
-              ),
-              ElevatedButton(
-                child: Text("activity page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Activity');
-                },
-              ),
-              ElevatedButton(
-                child: Text("home page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Home');
-                },
-              ),
-              ElevatedButton(
-                child: Text("weather page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Weather');
-                },
-              ),
-              ElevatedButton(
-                child: Text("user page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/User');
+              FutureBuilder<Map<String, dynamic>>(
+                future: fetchWeatherForecast(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return CircularProgressIndicator();
+                  } else if (snapshot.hasError) {
+                    return Text(
+                        'Error fetching weather forecast: ${snapshot.error}');
+                  } else {
+                    // Assuming data is returned in the desired format
+                    var forecastData = snapshot.data!;
+                    List<Widget> forecastWidgets = [];
+                    var forecastDays = forecastData['forecast']['forecastday'];
+
+                    for (var day in forecastDays) {
+                      var date = day['date'];
+                      var maxTemp = day['day']['maxtemp_c'];
+                      var minTemp = day['day']['mintemp_c'];
+                      var avgWind = day['day']['maxwind_kph'];
+                      var condition = day['day']['condition']['text'];
+
+                      forecastWidgets.add(
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text('$date',
+                                  style: TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.bold)),
+                              Text('$maxTemp°C/$minTemp°C',
+                                  style: TextStyle(fontSize: 18)),
+                              Text('$condition',
+                                  style: TextStyle(fontSize: 20)),
+                            ],
+                          ),
+                        ),
+                      );
+                    }
+
+// Displaying the weather forecast data
+                    return Column(
+                      children: forecastWidgets,
+                    );
+                  }
+                  return Container(); // Placeholder to avoid syntax error
                 },
               ),
             ],
