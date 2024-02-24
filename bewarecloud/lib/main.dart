@@ -12,6 +12,7 @@ import 'views/user_setting_notification.dart';
 import 'views/user_setting.dart';
 import 'views/user.dart';
 import 'views/weather.dart';
+import 'views/weather_forecast.dart';
 
 void main() {
   initializeDateFormatting('en_EN', null).then((_) {
@@ -41,6 +42,7 @@ class MyApp extends StatelessWidget {
         '/UserSetting': (context) => UserSettingPage(),
         '/User': (context) => UserPage(),
         '/Weather': (context) => WeatherPage(),
+        '/WeatherForecast': (context) => WeatherForecast(),
       },
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),

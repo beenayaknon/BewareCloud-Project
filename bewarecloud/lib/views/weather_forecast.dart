@@ -52,12 +52,12 @@ class LocationService {
   }
 }
 
-class WeatherPage extends StatefulWidget {
+class WeatherForecast extends StatefulWidget {
   @override
   _WeatherPageState createState() => _WeatherPageState();
 }
 
-class _WeatherPageState extends State<WeatherPage> {
+class _WeatherPageState extends State<WeatherForecast> {
   final String apiKey = 'dbc6ddcf06754a25bd1134032242002';
   final LocationService _locationService = LocationService();
   LocationData? _currentLocation;
@@ -99,23 +99,10 @@ class _WeatherPageState extends State<WeatherPage> {
     }
   }
 
-  // final String city = 'Bangkok';
-  // Fetch current weather data
-  Future<Map<String, dynamic>> fetchCurrentWeather() async {
-    final url = Uri.parse(
-        'https://api.weatherapi.com/v1/current.json?key=$apiKey&q=$_locationInfo&aqi=no');
-    final response = await http.get(url);
-    if (response.statusCode == 200) {
-      return json.decode(response.body);
-    } else {
-      throw Exception('Failed to load current weather data');
-    }
-  }
-
   // Fetch weather forecast data
   Future<Map<String, dynamic>> fetchWeatherForecast() async {
     final url = Uri.parse(
-        'https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$_locationInfo&days=3&aqi=no');
+        'https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$_locationInfo&days=10&aqi=no');
     final response = await http.get(url);
     if (response.statusCode == 200) {
       return json.decode(response.body);
@@ -128,72 +115,77 @@ class _WeatherPageState extends State<WeatherPage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Weather Info'),
+          title: Text('Weather Forecast'),
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
               Text(_locationInfo),
               FutureBuilder<Map<String, dynamic>>(
-                future: fetchCurrentWeather(),
+                future: fetchWeatherForecast(),
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return CircularProgressIndicator();
                   } else if (snapshot.hasError) {
                     return Text(
-                        'Error fetching current weather: ${snapshot.error}');
+                        'Error fetching weather forecast: ${snapshot.error}');
                   } else {
                     // Assuming data is returned in the desired format
-                    var currentWeather = snapshot.data!;
-                    var location = currentWeather['location']['name'];
-                    var tempC = currentWeather['current']['temp_c'];
-                    var windKph = currentWeather['current']['wind_kph'];
-                    var pressureMb = currentWeather['current']['pressure_mb'];
-                    var humidity = currentWeather['current']['humidity'];
-                    var condition =
-                        currentWeather['current']['condition']['text'];
+                    var forecastData = snapshot.data!;
+                    List<Widget> forecastWidgets = [];
+                    var forecastDays = forecastData['forecast']['forecastday'];
 
-// Displaying the current weather data
-                    return Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text('Location: $location',
-                              style: TextStyle(fontSize: 20)),
-                          Text('Temperature: $tempC°C',
-                              style: TextStyle(fontSize: 20)),
-                          Text('Wind: $windKph kph',
-                              style: TextStyle(fontSize: 20)),
-                          Text('Pressure: $pressureMb mb',
-                              style: TextStyle(fontSize: 20)),
-                          Text('Humidity: $humidity%',
-                              style: TextStyle(fontSize: 20)),
-                          Text('$condition', style: TextStyle(fontSize: 20)),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 50.0,
-                            child: ElevatedButton.icon(
-                              icon: Icon(Icons.directions_run),
-                              label: Text("Weather Forecast"),
-                              onPressed: () {
-                                Navigator.pushReplacementNamed(
-                                    context, '/WeatherForecast');
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                              ),
+                    for (var day in forecastDays) {
+                      var date = day['date'];
+                      var maxTemp = day['day']['maxtemp_c'];
+                      var minTemp = day['day']['mintemp_c'];
+                      var condition = day['day']['condition']['text'];
+
+                      forecastWidgets.add(
+                        Container(
+                          margin: EdgeInsets.all(8.0),
+                          padding: EdgeInsets.all(16.0),
+                          constraints: BoxConstraints(
+                            minHeight:
+                                120.0, // Minimum height: adjust accordingly
+                            maxWidth: double
+                                .infinity, // Assuming you want to stretch across the width
+                          ),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(10),
+                          ),
+                          child: IntrinsicHeight(
+                            // This widget ensures that all children of the column fill up the minimum height provided
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text('$date',
+                                    style: TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.bold)),
+                                Spacer(), // Use Spacer widgets to distribute space evenly
+                                Text('$maxTemp°C/$minTemp°C',
+                                    style: TextStyle(fontSize: 18)),
+                                Spacer(), // Another Spacer
+                                Text('$condition',
+                                    style: TextStyle(fontSize: 20)),
+                              ],
                             ),
                           ),
-                        ],
+                        ),
+                      );
+                    }
+                    return Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: forecastWidgets,
                       ),
                     );
                   }
                   return Container();
                 },
-              )
+              ),
             ],
           ),
         ),

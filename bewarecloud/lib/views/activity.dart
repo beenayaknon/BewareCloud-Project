@@ -28,9 +28,8 @@ class _ActivityPageState extends State<ActivityPage> {
 
   @override
   Widget build(BuildContext context) {
-    final double buttonWidth =
-        MediaQuery.of(context).size.width * 0.8; // 80% of screen width
-    final double buttonHeight = 60.0; // Fixed height
+    final double buttonWidth = MediaQuery.of(context).size.width * 0.8;
+    final double buttonHeight = 60.0;
 
     return Scaffold(
       appBar: AppBar(
@@ -81,36 +80,32 @@ class _ActivityPageState extends State<ActivityPage> {
               width: buttonWidth,
               height: buttonHeight,
               child: ElevatedButton.icon(
-                icon: Icon(Icons.list), // Choose an appropriate icon
-                label: Text('Show all plans'),
+                icon: Icon(Icons.list),
+                label: Text('Your activity'),
                 onPressed: () {
-                  // Implement navigation or action
+                  Navigator.pushReplacementNamed(context, '/ActivityList');
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(8.0), // Reduced border radius
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                  // Add any other styling here
                 ),
               ),
             ),
-            SizedBox(height: 10), // Adds space between buttons
+            SizedBox(height: 10),
             SizedBox(
               width: buttonWidth,
               height: buttonHeight,
               child: ElevatedButton.icon(
-                icon: Icon(Icons.add), // Choose an appropriate icon
-                label: Text('Add new plan'),
+                icon: Icon(Icons.add),
+                label: Text('Add new activity'),
                 onPressed: () {
-                  // Implement navigation or action
+                  Navigator.pushReplacementNamed(context, '/ActivityAdd');
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                    borderRadius:
-                        BorderRadius.circular(8.0), // Reduced border radius
+                    borderRadius: BorderRadius.circular(8.0),
                   ),
-                  // Add any other styling here
                 ),
               ),
             ),
