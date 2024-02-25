@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'activity.dart';
-import 'user.dart';
+import 'tutorial_1.dart';
 import 'weather.dart';
 
 class HomePage extends StatelessWidget {

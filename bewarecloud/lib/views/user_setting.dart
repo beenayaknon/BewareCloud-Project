@@ -5,18 +5,30 @@ class UserSettingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Setting'),
+          title: Text('User'),
         ),
         body: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
+                child: Text("Tutorial"),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/Tutorial1');
+                },
+              ),
+              ElevatedButton(
+                child: Text("About us"),
+                onPressed: () {
+                  Navigator.pushReplacementNamed(context, '/Aboutus');
+                },
+              ),
+              ElevatedButton(
                 child: Text("Logout"),
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/');
                 },
-              )
+              ),
             ],
           ),
         ),
@@ -24,8 +36,7 @@ class UserSettingPage extends StatelessWidget {
           child: BottomNavigationBar(
             selectedItemColor: Colors.grey,
             unselectedItemColor: Colors.grey,
-            type: BottomNavigationBarType
-                .fixed, // Ensure all text labels are visible
+            type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
