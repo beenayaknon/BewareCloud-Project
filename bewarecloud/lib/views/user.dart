@@ -12,39 +12,9 @@ class UserPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
-                child: Text("setting page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/UserSetting');
-                },
-              ),
-              ElevatedButton(
-                child: Text("log out"),
+                child: Text("Logout"),
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/');
-                },
-              ),
-              ElevatedButton(
-                child: Text("activity page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Activity');
-                },
-              ),
-              ElevatedButton(
-                child: Text("home page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Home');
-                },
-              ),
-              ElevatedButton(
-                child: Text("weather page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Weather');
-                },
-              ),
-              ElevatedButton(
-                child: Text("user page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/User');
                 },
               ),
             ],
@@ -54,8 +24,7 @@ class UserPage extends StatelessWidget {
           child: BottomNavigationBar(
             selectedItemColor: Colors.grey,
             unselectedItemColor: Colors.grey,
-            type: BottomNavigationBarType
-                .fixed, // Ensure all text labels are visible
+            type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),

@@ -1,3 +1,4 @@
+import 'package:bewarecloud/views/activity_confirmadd.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
 
@@ -16,8 +17,17 @@ class _ActivityAddPageState extends State<ActivityAddPage> {
   void _submitForm() {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
-      // Here you can handle the submission logic, e.g., saving the data to a database or calling an API
-      Navigator.pushReplacementNamed(context, '/Activity');
+      Navigator.push(
+        context,
+        MaterialPageRoute(
+          builder: (context) => ActivityConfirmPage(
+            activityName: _activityName,
+            description: _description,
+            location: _location,
+            selectedDate: _selectedDate,
+          ),
+        ),
+      );
     }
   }
 

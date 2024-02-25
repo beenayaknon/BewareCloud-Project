@@ -12,37 +12,11 @@ class UserSettingPage extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               ElevatedButton(
-                child: Text("back"),
+                child: Text("Logout"),
                 onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/User');
+                  Navigator.pushReplacementNamed(context, '/');
                 },
-              ),
-              ElevatedButton(
-                child: Text("notification"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, '/UserSettingNotification');
-                },
-              ),
-              ElevatedButton(
-                child: Text("language"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(
-                      context, '/UserSettingLanguage');
-                },
-              ),
-              ElevatedButton(
-                child: Text("celcius"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/UserSetting');
-                },
-              ),
-              ElevatedButton(
-                child: Text("fahrenheit"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/UserSetting');
-                },
-              ),
+              )
             ],
           ),
         ),

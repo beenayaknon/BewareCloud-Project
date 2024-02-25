@@ -21,15 +21,13 @@ class HomePage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
             Padding(
-              padding: EdgeInsets.only(
-                  bottom: 20.0), // Adds space below the welcome text
+              padding: EdgeInsets.only(bottom: 20.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.cloud, size: 24.0), // Cloud icon
-                  SizedBox(width: 10), // Space between icon and text
-                  Text("Welcome",
-                      style: TextStyle(fontSize: 20.0)), // Welcome text
+                  Icon(Icons.cloud, size: 24.0),
+                  SizedBox(width: 10),
+                  Text("Welcome", style: TextStyle(fontSize: 20.0)),
                 ],
               ),
             ),
@@ -37,49 +35,46 @@ class HomePage extends StatelessWidget {
               width: buttonWidth,
               height: buttonHeight,
               child: ElevatedButton.icon(
-                icon: Icon(Icons.directions_run), // Icon for Activity
+                icon: Icon(Icons.directions_run),
                 label: Text("Activity"),
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/Activity');
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(15.0)), // Reduced border radius
+                      borderRadius: BorderRadius.circular(15.0)),
                 ),
               ),
             ),
-            SizedBox(height: 10), // Adds space between buttons
+            SizedBox(height: 10),
             SizedBox(
               width: buttonWidth,
               height: buttonHeight,
               child: ElevatedButton.icon(
-                icon: Icon(Icons.cloud), // Icon for Check weather
+                icon: Icon(Icons.cloud),
                 label: Text("Check weather"),
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/Weather');
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(15.0)), // Reduced border radius
+                      borderRadius: BorderRadius.circular(15.0)),
                 ),
               ),
             ),
-            SizedBox(height: 10), // Adds space between buttons
+            SizedBox(height: 10),
             SizedBox(
               width: buttonWidth,
               height: buttonHeight,
               child: ElevatedButton.icon(
-                icon: Icon(Icons.settings), // Icon for Setting
+                icon: Icon(Icons.settings),
                 label: Text("Setting"),
                 onPressed: () {
                   Navigator.pushReplacementNamed(context, '/User');
                 },
                 style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
-                      borderRadius:
-                          BorderRadius.circular(15.0)), // Reduced border radius
+                      borderRadius: BorderRadius.circular(15.0)),
                 ),
               ),
             ),
@@ -90,8 +85,7 @@ class HomePage extends StatelessWidget {
         child: BottomNavigationBar(
           selectedItemColor: Colors.grey,
           unselectedItemColor: Colors.grey,
-          type: BottomNavigationBarType
-              .fixed, // Ensure all text labels are visible
+          type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
               icon: Icon(Icons.home),
