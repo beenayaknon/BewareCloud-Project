@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 
 import 'views/activity_addactivity.dart';
 import 'views/activity_list.dart';
@@ -17,10 +19,15 @@ import 'views/aboutus.dart';
 import 'views/tutorial_1.dart';
 import 'views/tutorial_2.dart';
 
-void main() {
-  initializeDateFormatting('en_EN', null).then((_) {
-    runApp(MyApp());
-  });
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  try {
+    await Firebase.initializeApp();
+  } catch (e) {
+    print("An error occurred while initializing Firebase: $e");
+    // Consider handling the error perhaps by showing an error message
+  }
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
