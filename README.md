@@ -1,3 +1,3 @@
-# 2024-Wireless-Project
+# 2024-BewareCloud-Project
 
-hi 0w0
+This is repository for ITCS424 Wireless and Mobile Computing: BewareCloud Project
