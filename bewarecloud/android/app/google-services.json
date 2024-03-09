@@ -1,21 +1,21 @@
 {
   "project_info": {
-    "project_number": "60806445012",
-    "project_id": "bewarecloude",
-    "storage_bucket": "bewarecloude.appspot.com"
+    "project_number": "121656597172",
+    "project_id": "bewarecloud",
+    "storage_bucket": "bewarecloud.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:60806445012:android:ee04300a5b296c661a0841",
+        "mobilesdk_app_id": "1:121656597172:android:576e9d183e010de28c55e1",
         "android_client_info": {
-          "package_name": "BewareCloud.Duangduean"
+          "package_name": "com.example.bewarecloud"
         }
       },
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyCG7YUBDFtw5nhly096EmyLxoNgv1L9mzM"
+          "current_key": "AIzaSyCATK5H-Tkr7Rxn0L7yQefVpzQY3cLrQAc"
         }
       ],
       "services": {

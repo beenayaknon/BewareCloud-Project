@@ -3,7 +3,16 @@ import 'activity.dart';
 import 'tutorial_1.dart';
 import 'weather.dart';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class HomePage extends StatelessWidget {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<List<DocumentSnapshot>> _getActivities() async {
+    QuerySnapshot querySnapshot = await _firestore.collection('Activity').get();
+    return querySnapshot.docs;
+  }
+
   @override
   Widget build(BuildContext context) {
     // Determining the button size based on screen size
@@ -20,6 +29,30 @@ class HomePage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
+            FutureBuilder(
+              future: _getActivities(),
+              builder: (BuildContext context, AsyncSnapshot<List<DocumentSnapshot>> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return CircularProgressIndicator();
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  // Build a list view of all activities
+                  return Expanded(
+                    child: ListView.builder(
+                      itemCount: snapshot.data?.length ?? 0,
+                      itemBuilder: (context, index) {
+                        var activity = snapshot.data![index];
+                        return ListTile(
+                          title: Text(activity['Act_title']),
+                          subtitle: Text(activity['Act_desc']),
+                        );
+                      },
+                    ),
+                  );
+                }
+              },
+            ),
             Padding(
               padding: EdgeInsets.only(bottom: 20.0),
               child: Row(

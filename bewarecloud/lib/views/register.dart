@@ -1,60 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
+
 class RegisterPage extends StatefulWidget {
+  const RegisterPage({Key? key}) : super(key: key);
+
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  State<RegisterPage> createState() => _RegisterPageState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+  final usernameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
 
-  // Create a text controller for each field
-  final _usernameController = TextEditingController();
-  final _emailController = TextEditingController();
-  final _passwordController = TextEditingController();
-
-  @override
-  void dispose() {
-    _usernameController.dispose();
-    _emailController.dispose();
-    _passwordController.dispose();
-    super.dispose();
-  }
-
-  Future<void> registerUser(BuildContext context) async {
-    try {
-      // Use FirebaseAuth to create a new user
-      UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-        email: _emailController.text,
-        password: _passwordController.text,
-      );
-
-      // If the user is successfully created, store additional information in Firestore
-      await FirebaseFirestore.instance.collection('users').doc(userCredential.user!.uid).set({
-        'username': _usernameController.text,
-        'email': _emailController.text,
-        // Don't store the password
-      });
-
-      // Show success message and navigate to home
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('User registered successfully')));
-      Navigator.pushReplacementNamed(context, '/Home');
-    } on FirebaseAuthException catch (e) {
-      var errorMessage = 'Failed to register user';
-      if (e.code == 'weak-password') {
-        errorMessage = 'The password provided is too weak.';
-      } else if (e.code == 'email-already-in-use') {
-        errorMessage = 'The account already exists for that email.';
-      }
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(errorMessage)));
-    } catch (e) {
-      print(e); // Print the error to the console
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text('An error occurred: $e')));
-    }
-  }
-
+  class _RegisterPageState extends State<RegisterPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +32,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  controller: _usernameController,
+                  controller: usernameController,
                   decoration: InputDecoration(
                     labelText: 'Username',
                   ),
@@ -85,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  controller: _emailController,
+                  controller: emailController,
                   decoration: InputDecoration(
                     labelText: 'Email',
                   ),
@@ -100,7 +62,7 @@ class _RegisterPageState extends State<RegisterPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  controller: _passwordController,
+                  controller: passwordController,
                   decoration: InputDecoration(
                     labelText: 'Password',
                   ),
@@ -115,10 +77,12 @@ class _RegisterPageState extends State<RegisterPage> {
               ElevatedButton(
                 child: Text("Register"),
                 onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    // Call the register user function
-                    registerUser(context);
-                  }
+                  CollectionReference collRef = FirebaseFirestore.instance.collection('client');
+                  collRef.add({
+                    'User_email': emailController.text,
+                    'User_password': passwordController.text,
+                    'User_username': usernameController.text,
+                  });
                 },
               ),
               ElevatedButton(

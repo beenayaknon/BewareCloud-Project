@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:firebase_core/firebase_core.dart';
-
+import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'views/activity_addactivity.dart';
 import 'views/activity_list.dart';
@@ -25,7 +25,6 @@ void main() async {
     await Firebase.initializeApp();
   } catch (e) {
     print("An error occurred while initializing Firebase: $e");
-    // Consider handling the error perhaps by showing an error message
   }
   runApp(MyApp());
 }

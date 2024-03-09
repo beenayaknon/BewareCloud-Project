@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="NONE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0571c7fd-1112-42da-b638-995d6df0911c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/2024-BewareCloud-Project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/android/app/google-services.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/lib/views/home.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/lib/views/register.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/user_setting.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/lib/views/user_setting.dart" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ClangdSettings">
+    <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2czACjKPyLzXJRNZD2BBqIhqx8e" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.cidr.known.project.marker": "true",
+    "android.gradle.sync.needed": "true",
+    "cf.first.check.clang-format": "false",
+    "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
+    "last_opened_file_path": "C:/Users/Beebie/Documents/y3/2024-BewareCloud-Project/bewarecloud",
+    "settings.editor.selected.configurable": "flutter.settings",
+    "settings.editor.splitter.proportion": "0.20897044",
+    "show.migrate.to.gradle.popup": "false"
+  }
+}]]></component>
+  <component name="RunAnythingCache">
+    <myKeys>
+      <visibility group="Gradle Tasks" flag="true" />
+      <visibility group="Recent projects" flag="true" />
+      <visibility group="Run configurations" flag="true" />
+      <visibility group="com.intellij.ide.actions.runAnything.RunAnythingRunConfigurationProvider" flag="false" />
+      <visibility group="com.intellij.ide.actions.runAnything.activity.RunAnythingRecentProjectProvider" flag="false" />
+      <visibility group="org.jetbrains.plugins.gradle.execution.GradleRunAnythingProvider" flag="false" />
+    </myKeys>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="lib/main.dart" />
+      <method v="2" />
+    </configuration>
+    <configuration name="snitty" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="lib/main.dart" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0571c7fd-1112-42da-b638-995d6df0911c" name="Changes" comment="" />
+      <created>1709103911981</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1709103911981</updated>
+    </task>
+    <servers />
+  </component>
+</project>
