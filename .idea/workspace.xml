@@ -5,16 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0571c7fd-1112-42da-b638-995d6df0911c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/2024-BewareCloud-Project.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/google-services.json" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/android/app/google-services.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bewarecloud/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/lib/views/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/lib/views/register.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/user_setting.dart" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/lib/views/user_setting.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/.gitignore" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +18,12 @@
   </component>
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
+  </component>
+  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Beebie\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
   </component>
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
@@ -42,6 +43,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 6
+}</component>
   <component name="ProjectId" id="2czACjKPyLzXJRNZD2BBqIhqx8e" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -52,12 +56,17 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
-    "android.gradle.sync.needed": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "com.google.services.firebase.aqiPopupShown": "true",
     "dart.analysis.tool.window.visible": "false",
-    "last_opened_file_path": "C:/Users/Beebie/Documents/y3/2024-BewareCloud-Project/bewarecloud",
-    "settings.editor.selected.configurable": "flutter.settings",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "last_opened_file_path": "C:/flutter",
+    "project.structure.last.edited": "Suggestions",
+    "project.structure.proportion": "0.17",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "dart.settings",
     "settings.editor.splitter.proportion": "0.20897044",
     "show.migrate.to.gradle.popup": "false"
   }
@@ -72,15 +81,29 @@
       <visibility group="org.jetbrains.plugins.gradle.execution.GradleRunAnythingProvider" flag="false" />
     </myKeys>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Flutter.snitty">
+    <configuration name="main.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
+      <option name="filePath" value="$PROJECT_DIR$/bewarecloud/lib/main.dart" />
+      <option name="workingDirectory" value="$PROJECT_DIR$/bewarecloud" />
+      <method v="2" />
+    </configuration>
     <configuration default="true" type="FlutterRunConfigurationType" factoryName="Flutter">
       <option name="filePath" value="lib/main.dart" />
       <method v="2" />
     </configuration>
-    <configuration name="snitty" type="FlutterRunConfigurationType" factoryName="Flutter">
-      <option name="filePath" value="lib/main.dart" />
+    <configuration name="snitty" type="FlutterRunConfigurationType" factoryName="Flutter" activateToolWindowBeforeRun="false">
+      <option name="filePath" value="$PROJECT_DIR$/bewarecloud/lib/main.dart" />
       <method v="2" />
     </configuration>
+    <list>
+      <item itemvalue="Dart Command Line App.main.dart" />
+      <item itemvalue="Flutter.snitty" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Dart Command Line App.main.dart" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
