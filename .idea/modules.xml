@@ -2,7 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/2024-BewareCloud-Project.iml" filepath="$PROJECT_DIR$/.idea/modules/2024-BewareCloud-Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/bewarecloud.iml" filepath="$PROJECT_DIR$/bewarecloud.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/bewarecloud_android.iml" filepath="$PROJECT_DIR$/android/bewarecloud_android.iml" />
     </modules>
   </component>
 </project>

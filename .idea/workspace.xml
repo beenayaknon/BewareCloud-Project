@@ -1,15 +1,195 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AndroidLayouts">
+    <shared>
+      <config />
+    </shared>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0571c7fd-1112-42da-b638-995d6df0911c" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+    <list default="true" id="b769e2ed-8b18-4800-997b-88563c71c83f" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/migrations.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/2024-BewareCloud-Project.iml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bewarecloud/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/bewarecloud/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/build.gradle.kts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/main/java/org/example/App.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/src/test/java/org/example/AppTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/.gitattributes" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/.metadata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/analysis_options.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/google-services.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/debug/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/kotlin/com/example/bewarecloud/MainActivity.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/values-night/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/main/res/values/styles.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/app/src/profile/AndroidManifest.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/gradle.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/android/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/app/build.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/app/src/main/kotlin/org/example/App.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/app/src/test/kotlin/org/example/AppTest.kt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/assets/appimages/cloudy.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/assets/appimages/rain.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/assets/appimages/sunny.jpeg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/assets/logo/bewareclouddy.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Flutter/Debug.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Flutter/Release.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/AppDelegate.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Base.lproj/LaunchScreen.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Base.lproj/Main.storyboard" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/Runner/Runner-Bridging-Header.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/ios/RunnerTests/RunnerTests.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/main.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/aboutus.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/activity.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/activity_addactivity.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/activity_confirmadd.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/activity_list.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/activity_show.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/home.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/login.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/register.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/start.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/tutorial_1.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/tutorial_2.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/user_setting.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/weather.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/lib/views/weather_forecast.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/flutter/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/flutter/generated_plugin_registrant.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/flutter/generated_plugins.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/main.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/my_application.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/linux/my_application.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Flutter/Flutter-Debug.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Flutter/Flutter-Release.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner.xcodeproj/project.pbxproj" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/AppDelegate.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Base.lproj/MainMenu.xib" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Configs/AppInfo.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Configs/Debug.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Configs/Release.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Configs/Warnings.xcconfig" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/DebugProfile.entitlements" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Info.plist" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/MainFlutterWindow.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/Runner/Release.entitlements" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/macos/RunnerTests/RunnerTests.swift" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/pubspec.lock" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/pubspec.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/settings.gradle" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/test/widget_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/web/favicon.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/web/icons/Icon-192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/web/icons/Icon-512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/web/icons/Icon-maskable-192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/web/icons/Icon-maskable-512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/web/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/web/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/flutter/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/flutter/generated_plugin_registrant.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/flutter/generated_plugins.cmake" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/CMakeLists.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/Runner.rc" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/flutter_window.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/flutter_window.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/main.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/resource.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/resources/app_icon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/runner.exe.manifest" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/utils.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/utils.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/win32_window.cpp" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bewarecloud/windows/runner/win32_window.h" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/libs.versions.toml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle.kts" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,100 +199,56 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
-  <component name="ExecutionTargetManager" SELECTED_TARGET="device_and_snapshot_combo_box_target[C:\Users\Beebie\.android\avd\Pixel_3a_API_34_extension_level_7_x86_64.avd]" />
-  <component name="ExternalProjectsData">
-    <projectState path="$PROJECT_DIR$">
-      <ProjectState />
-    </projectState>
-  </component>
-  <component name="ExternalProjectsManager">
-    <system id="GRADLE">
-      <state>
-        <projects_view>
-          <tree_state>
-            <expand />
-            <select />
-          </tree_state>
-        </projects_view>
-      </state>
-    </system>
-  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 6
-}</component>
-  <component name="ProjectId" id="2czACjKPyLzXJRNZD2BBqIhqx8e" />
+  <component name="ProjectId" id="2dkuCwtsL3mYqMns72dOuDhyhHs" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "com.google.services.firebase.aqiPopupShown": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/flutter",
-    "project.structure.last.edited": "Suggestions",
-    "project.structure.proportion": "0.17",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "dart.settings",
-    "settings.editor.splitter.proportion": "0.20897044",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Beebie/Documents/y3/2024-BewareCloud-Project&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.language.Kotlin&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
-  <component name="RunAnythingCache">
-    <myKeys>
-      <visibility group="Gradle Tasks" flag="true" />
-      <visibility group="Recent projects" flag="true" />
-      <visibility group="Run configurations" flag="true" />
-      <visibility group="com.intellij.ide.actions.runAnything.RunAnythingRunConfigurationProvider" flag="false" />
-      <visibility group="com.intellij.ide.actions.runAnything.activity.RunAnythingRecentProjectProvider" flag="false" />
-      <visibility group="org.jetbrains.plugins.gradle.execution.GradleRunAnythingProvider" flag="false" />
-    </myKeys>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Beebie\Documents\y3\BewareCloud" />
+      <recent name="C:\Users\Beebie\Documents\y3\BewareCloud\lib\views" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Beebie\Documents\y3\BewareCloud\lib\views" />
+      <recent name="C:\Users\Beebie\Documents\y3\BewareCloud\android\app" />
+    </key>
   </component>
-  <component name="RunManager" selected="Flutter.snitty">
-    <configuration name="main.dart" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application" temporary="true" nameIsGenerated="true">
-      <option name="filePath" value="$PROJECT_DIR$/bewarecloud/lib/main.dart" />
-      <option name="workingDirectory" value="$PROJECT_DIR$/bewarecloud" />
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="FlutterRunConfigurationType" factoryName="Flutter">
-      <option name="filePath" value="lib/main.dart" />
-      <method v="2" />
-    </configuration>
-    <configuration name="snitty" type="FlutterRunConfigurationType" factoryName="Flutter" activateToolWindowBeforeRun="false">
-      <option name="filePath" value="$PROJECT_DIR$/bewarecloud/lib/main.dart" />
-      <method v="2" />
-    </configuration>
-    <list>
-      <item itemvalue="Dart Command Line App.main.dart" />
-      <item itemvalue="Flutter.snitty" />
-    </list>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Dart Command Line App.main.dart" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0571c7fd-1112-42da-b638-995d6df0911c" name="Changes" comment="" />
-      <created>1709103911981</created>
+      <changelist id="b769e2ed-8b18-4800-997b-88563c71c83f" name="Changes" comment="" />
+      <created>1710564279632</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1709103911981</updated>
+      <updated>1710564279632</updated>
     </task>
     <servers />
   </component>
