@@ -8,6 +8,7 @@ class StartPage extends StatelessWidget {
     const double ffem = 1.0;
 
     return Scaffold(
+      backgroundColor: Color(0xFFF8FAFB),
       body: Container(
         padding: EdgeInsets.fromLTRB(45 * fem, 170 * fem, 45 * fem, 0 * fem),
         width: double.infinity,
@@ -46,7 +47,7 @@ class StartPage extends StatelessWidget {
               },
               style: TextButton.styleFrom(
                 backgroundColor: Color(0xffbad6eb),
-                minimumSize: Size(269.0, 53.0),
+                minimumSize: Size(350.0, 60.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50 * fem),
                 ),
@@ -81,7 +82,7 @@ class StartPage extends StatelessWidget {
               },
               style: TextButton.styleFrom(
                 backgroundColor: Color(0xffe8e8e8),
-                minimumSize: Size(269.0, 53.0),
+                minimumSize: Size(350.0, 60.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50 * fem),
                 ),

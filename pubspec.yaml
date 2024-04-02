@@ -39,6 +39,7 @@ dependencies:
   firebase_auth: ^4.17.9
   firebase_storage: ^11.6.10
   firebase_core: ^2.27.2
+  flutter_screenutil: ^5.0.0+2
 
   table_calendar: ^3.0.9
   flutter_localizations:
@@ -74,8 +75,13 @@ flutter:
     - assets/appimages/cloudy.jpeg
     - assets/appimages/rain.jpeg
     - assets/appimages/sunny.jpeg
-    - assets/icon/
     - assets/logo/bewareclouddy.png
+    - assets/icon/back.png
+    - assets/icon/settings.png
+    - assets/tutorials/Activity_page.png
+    - assets/tutorials/Home_page.png
+    - assets/tutorials/Setting_page.png
+    - assets/tutorials/Weather_page.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

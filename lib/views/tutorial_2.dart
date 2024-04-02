@@ -3,27 +3,113 @@ import 'package:flutter/material.dart';
 class Tutorial2Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    const double fem = 1.0;
+    const double ffem = 1.0;
+
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tutorial Page 2'),
+        title: Text(
+          'Tutorial',
+          style: TextStyle(
+            fontFamily: 'Heebo',
+            fontSize: 34 * ffem,
+            fontWeight: FontWeight.w800,
+            color: Color(0xff091f5b),
+          ),
+        ),
+        backgroundColor: Color(0xfffafafb),
+        elevation: 0, // No shadow for consistency with the design
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            ElevatedButton(
-              child: Text("Back"),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/Tutorial1');
-              },
-            ),
-            ElevatedButton(
-              child: Text("Finish"),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/UserSetting');
-              },
-            ),
-          ],
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(40 * fem, 35 * fem, 40 * fem, 0 * fem),
+          child: Column(
+            //crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Your tutorial content goes here.
+              // For example, using images and text to describe the tutorial steps.
+              SizedBox(height: 5 * ffem),
+              Text(
+                'Weather Page',
+                style: TextStyle(
+                  fontSize: 24 * ffem, // Adjust the font size as per design
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10 * ffem),
+              Image.asset('assets/tutorials/Weather_page.png'),
+              SizedBox(height: 10 * ffem),
+              Text(
+                '     "Weather" page presents today weather information at your location and it has button to see 7-days weather forecast in "Weather Forecast" page.',
+                style: TextStyle(fontSize: 16 * ffem),
+              ),
+              // ... Add more tutorial content if needed.
+              SizedBox(height: 30 * ffem),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 20 * ffem),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/Tutorial1');
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: Color(0xffE8E8E8),
+                        minimumSize: Size(150.0 * fem, 60.0 * ffem), // Adjust the size as needed
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50 * fem),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
+                          Text(
+                            'Prev',
+                            style: TextStyle(
+                              fontFamily: 'Nunito',
+                              fontSize: 16 * ffem,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+
+                    // Next Button
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/Tutorial3');
+                      },
+                      style: TextButton.styleFrom(
+                        backgroundColor: Color(0xffBAD6EB),
+                        minimumSize: Size(150.0 * fem, 60.0 * ffem), // Adjust the size as needed
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(50 * fem),
+                        ),
+                      ),
+                      child: Row(
+                        children: [
+                          Text(
+                            'Next',
+                            style: TextStyle(
+                              fontFamily: 'Nunito',
+                              fontSize: 16 * ffem,
+                              fontWeight: FontWeight.w600,
+                              color: Color(0xff000000),
+                            ),
+                          ),
+                          Icon(Icons.arrow_forward_ios, color: Color(0xff000000)),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );

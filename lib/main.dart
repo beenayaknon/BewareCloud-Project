@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:intl/date_symbol_data_local.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'firebase_options.dart';
 
 import 'views/activity_addactivity.dart';
@@ -17,8 +15,9 @@ import 'views/weather.dart';
 import 'views/weather_forecast.dart';
 import 'views/start.dart';
 import 'views/aboutus.dart';
-import 'views/tutorial_1.dart';
 import 'views/tutorial_2.dart';
+import 'views/tutorial_3.dart';
+import 'views/tutorial_4.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,13 +51,10 @@ class MyApp extends StatelessWidget {
         '/WeatherForecast': (context) => WeatherForecast(),
         '/Register': (context) => RegisterPage(),
         '/Aboutus': (context) => AboutusPage(),
-        '/Tutorial1': (context) => Tutorial1Page(),
         '/Tutorial2': (context) => Tutorial2Page(),
+        '/Tutorial3': (context) => Tutorial3Page(),
+        '/Tutorial4': (context) => Tutorial4Page(),
       },
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
     );
   }
 }

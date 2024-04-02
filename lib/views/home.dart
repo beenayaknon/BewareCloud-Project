@@ -15,109 +15,116 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Determining the button size based on screen size
-    // Adjust these values as needed
-    final double buttonWidth =
-        MediaQuery.of(context).size.width * 0.8; // 80% of screen width
-    final double buttonHeight = 60.0; // Fixed height
+    const double fem = 1.0;
+    const double ffem = 1.0;
 
     return Scaffold(
+      backgroundColor: Color(0xFFF1F1F1),
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: Text('Home', style: TextStyle(color: Colors.black)),
+        titleTextStyle: TextStyle(
+          fontFamily: 'Heebo',
+          fontSize: 34 * ffem,
+          fontWeight: FontWeight.w800,
+          color: Color(0xff000000),
+        ),
+        backgroundColor: Color(0xFFF1F1F1),
+        actions: [
+          IconButton(
+            icon: Image.asset(
+                'assets/icon/settings.png',
+                width: 30 * fem,
+                height: 30 * fem,
+            ),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/UserSetting');
+            },
+          ),
+        ],
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            FutureBuilder(
-              future: _getActivities(),
-              builder: (BuildContext context, AsyncSnapshot<List<DocumentSnapshot>> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return CircularProgressIndicator();
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else {
-                  // Build a list view of all activities
-                  return Expanded(
-                    child: ListView.builder(
-                      itemCount: snapshot.data?.length ?? 0,
-                      itemBuilder: (context, index) {
-                        var activity = snapshot.data![index];
-                        return ListTile(
-                          title: Text(activity['Act_title']),
-                          subtitle: Text(activity['Act_desc']),
-                        );
-                      },
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: EdgeInsets.all(16.0 * fem),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 20 * ffem),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    // Previous Button
+                    Text('Weather', style: TextStyle(fontSize: 24 * ffem)),
+                    Spacer(),
+                    // Next Button
+                    TextButton(
+                      onPressed: () {},
+                      child: Text('Check weather >'),
                     ),
-                  );
-                }
-              },
-            ),
-            Padding(
-              padding: EdgeInsets.only(bottom: 20.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Icon(Icons.cloud, size: 24.0),
-                  SizedBox(width: 10),
-                  Text("Welcome", style: TextStyle(fontSize: 20.0)),
-                ],
-              ),
-            ),
-            SizedBox(
-              width: buttonWidth,
-              height: buttonHeight,
-              child: ElevatedButton.icon(
-                icon: Icon(Icons.directions_run),
-                label: Text("Activity"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Activity');
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)),
+                  ],
                 ),
               ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: buttonWidth,
-              height: buttonHeight,
-              child: ElevatedButton.icon(
-                icon: Icon(Icons.cloud),
-                label: Text("Check weather"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Weather');
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)),
+              Card(
+                child: Padding(
+                  padding: EdgeInsets.all(8.0 * fem),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 4 * ffem),
+                      Row(
+                        children: [
+                          Icon(Icons.cloud, size: 24 * fem),
+                          SizedBox(width: 8 * fem),
+                          Text('26/02/2024', style: TextStyle(fontSize: 18 * ffem)),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Text('45°', style: TextStyle(fontSize: 64 * ffem)),
+                          Text('Cloudy\n30 / 50 °C', textAlign: TextAlign.right),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: buttonWidth,
-              height: buttonHeight,
-              child: ElevatedButton.icon(
-                icon: Icon(Icons.settings),
-                label: Text("Setting"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/User');
+              SizedBox(height: 16 * ffem),
+
+              // Activity Card
+              Text('Today Activity', style: TextStyle(fontSize: 24 * ffem)),
+              SizedBox(height: 8 * ffem),
+              FutureBuilder(
+                future: _getActivities(),
+                builder: (BuildContext context, AsyncSnapshot<List<DocumentSnapshot>> snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Center(child: Text('Error: ${snapshot.error}'));
+                  } else {
+                    // Build a list view of all activities
+                    return ListView(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(), // to disable ListView's scrolling
+                      children: snapshot.data!.map((doc) {
+                        return ListTile(
+                          leading: Icon(Icons.directions_run),
+                          title: Text(doc['Act_title']),
+                          subtitle: Text(doc['Act_desc']),
+                        );
+                      }).toList(),
+                    );
+                  }
                 },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15.0)),
-                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: SafeArea(
         child: BottomNavigationBar(
-          selectedItemColor: Colors.grey,
-          unselectedItemColor: Colors.grey,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(

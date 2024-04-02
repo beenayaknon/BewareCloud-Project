@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class Tutorial1Page extends StatelessWidget {
+class Tutorial4Page extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     const double fem = 1.0;
@@ -31,17 +31,17 @@ class Tutorial1Page extends StatelessWidget {
               // For example, using images and text to describe the tutorial steps.
               SizedBox(height: 5 * ffem),
               Text(
-                'Home Page',
+                'Setting Page',
                 style: TextStyle(
                   fontSize: 24 * ffem, // Adjust the font size as per design
                   fontWeight: FontWeight.bold,
                 ),
               ),
               SizedBox(height: 10 * ffem),
-              Image.asset('assets/tutorials/Home_page.png'),
+              Image.asset('assets/tutorials/Activity_page.png'),
               SizedBox(height: 10 * ffem),
               Text(
-                '     The "Sign In" screen offers "Username" and "Password," along with options for new users to register or sign up. The "Home" screen of the application presents the current weather conditions, temperature, and user activities for the day, along with a bottom navigation bar for easy access to the app main features.',
+                '     The “Setting” page allows user to navigate to “Tutorial” page, “About us” page, and log out from the system.',
                 style: TextStyle(fontSize: 16 * ffem),
               ),
               // ... Add more tutorial content if needed.
@@ -54,10 +54,10 @@ class Tutorial1Page extends StatelessWidget {
                     // Previous Button
                     TextButton(
                       onPressed: () {
-                        //Navigator.pushReplacementNamed(context, '/Tutorial1');
+                        Navigator.pushReplacementNamed(context, '/Tutorial3');
                       },
                       style: TextButton.styleFrom(
-                        backgroundColor: Color(0xfffafafb),
+                        backgroundColor: Color(0xffE8E8E8),
                         minimumSize: Size(150.0 * fem, 60.0 * ffem), // Adjust the size as needed
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(50 * fem),
@@ -65,14 +65,14 @@ class Tutorial1Page extends StatelessWidget {
                       ),
                       child: Row(
                         children: [
-                          Icon(Icons.arrow_back_ios, color: Color(0xfffafafb)),
+                          Icon(Icons.arrow_back_ios, color: Color(0xff000000)),
                           Text(
-                            '',
+                            'Prev',
                             style: TextStyle(
                               fontFamily: 'Nunito',
                               fontSize: 16 * ffem,
                               fontWeight: FontWeight.w600,
-                              color: Color(0xfffafafb),
+                              color: Color(0xff000000),
                             ),
                           ),
                         ],
@@ -82,7 +82,7 @@ class Tutorial1Page extends StatelessWidget {
                     // Next Button
                     TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/Tutorial2');
+                        Navigator.pushReplacementNamed(context, '/UserSetting');
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: Color(0xffBAD6EB),
@@ -94,7 +94,7 @@ class Tutorial1Page extends StatelessWidget {
                       child: Row(
                         children: [
                           Text(
-                            'Next',
+                            'Finish',
                             style: TextStyle(
                               fontFamily: 'Nunito',
                               fontSize: 16 * ffem,
@@ -102,7 +102,6 @@ class Tutorial1Page extends StatelessWidget {
                               color: Color(0xff000000),
                             ),
                           ),
-                          Icon(Icons.arrow_forward_ios, color: Color(0xff000000)),
                         ],
                       ),
                     ),
