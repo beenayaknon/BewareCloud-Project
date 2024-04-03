@@ -30,7 +30,7 @@ class LocationService {
     try {
       // Check if latitude and longitude are not null
       if (locationData.latitude == null || locationData.longitude == null) {
-        return "Location data is incomplete";
+        return "Bangkok"; // Default to "Bangkok" if location data is incomplete
       }
 
       List<geocoding.Placemark> placemarks =
@@ -43,11 +43,12 @@ class LocationService {
         geocoding.Placemark place = placemarks.first;
         return "${place.locality}, ${place.country}";
       } else {
-        return "Unknown location";
+        return "Bangkok"; // Default to "Bangkok" if no placemark is found
       }
     } catch (e) {
-      // Return or log the error message
-      return "Failed to get city name: $e";
+      // Log the error if needed
+      // print("Failed to get city name: $e");
+      return "Bangkok"; // Default to "Bangkok" in case of any exception
     }
   }
 }
@@ -76,25 +77,35 @@ class _WeatherPageState extends State<WeatherPage> {
         LocationData locationData = await _locationService.getCurrentLocation();
         // Check if latitude and longitude are not null
         if (locationData.latitude != null && locationData.longitude != null) {
-          String cityName =
-              await _locationService.getCityNameFromLocation(locationData);
+          String cityName;
+          try {
+            cityName =
+                await _locationService.getCityNameFromLocation(locationData);
+          } catch (e) {
+            // If an error occurs while getting the city name, use "Bangkok" as default
+            cityName = "Bangkok";
+          }
           setState(() {
             _currentLocation = locationData;
-            _locationInfo = cityName; // Now storing the city name
+            _locationInfo =
+                cityName; // Now storing the city name or "Bangkok" if an error occurred
           });
         } else {
           setState(() {
-            _locationInfo = "Location data incomplete";
+            _locationInfo =
+                "Bangkok"; // Default to "Bangkok" if location data is incomplete
           });
         }
       } catch (e) {
         setState(() {
-          _locationInfo = "Failed to get location: $e";
+          _locationInfo =
+              "Bangkok"; // Default to "Bangkok" on failure to get location
         });
       }
     } else {
       setState(() {
-        _locationInfo = "Location permission not granted";
+        _locationInfo =
+            "Bangkok"; // Default to "Bangkok" if location permission not granted
       });
     }
   }
