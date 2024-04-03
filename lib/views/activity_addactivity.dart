@@ -1,6 +1,8 @@
 import 'package:bewarecloud/views/activity_confirmadd.dart';
 import 'package:flutter/material.dart';
 import 'package:table_calendar/table_calendar.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ActivityAddPage extends StatefulWidget {
   @override
@@ -14,9 +16,10 @@ class _ActivityAddPageState extends State<ActivityAddPage> {
   String _description = '';
   String _location = '';
 
-  void _submitForm() {
+  void _submitForm() async {
     if (_formKey.currentState!.validate()) {
       _formKey.currentState!.save();
+
       Navigator.push(
         context,
         MaterialPageRoute(
@@ -66,6 +69,16 @@ class _ActivityAddPageState extends State<ActivityAddPage> {
                   focusedDay: _selectedDate,
                   selectedDayPredicate: (day) => isSameDay(_selectedDate, day),
                   onDaySelected: (selectedDay, focusedDay) {
+                    if (selectedDay
+                        .isBefore(DateTime.now().subtract(Duration(days: 1)))) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text("Cannot select this date."),
+                          duration: Duration(seconds: 2),
+                        ),
+                      );
+                      return;
+                    }
                     setState(() {
                       _selectedDate = selectedDay;
                     });

@@ -1,43 +1,68 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:intl/intl.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
-class ActivityListPage extends StatelessWidget {
+class ActivityListPage extends StatefulWidget {
+  @override
+  _ActivityListPageState createState() => _ActivityListPageState();
+}
+
+class _ActivityListPageState extends State<ActivityListPage> {
+  final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+
+  Future<List<DocumentSnapshot>> _getActivities() async {
+    var userId = FirebaseAuth.instance.currentUser?.uid;
+    QuerySnapshot querySnapshot = await _firestore
+        .collection('users')
+        .doc(userId)
+        .collection('activities')
+        .get();
+    return querySnapshot.docs;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('List Activity'),
+          title: Text('All Activities'),
         ),
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              ElevatedButton(
-                child: Text("activity page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Activity');
+        body: FutureBuilder<List<DocumentSnapshot>>(
+          future: _getActivities(),
+          builder: (context, snapshot) {
+            if (snapshot.connectionState == ConnectionState.waiting) {
+              return Center(child: CircularProgressIndicator());
+            } else if (snapshot.hasError) {
+              return Text("Error: ${snapshot.error}");
+            } else if (snapshot.data!.isEmpty) {
+              return Text("No activity", style: TextStyle(fontSize: 20));
+            } else {
+              return ListView.builder(
+                itemCount: snapshot.data!.length,
+                itemBuilder: (context, index) {
+                  DocumentSnapshot document = snapshot.data![index];
+                  Map<String, dynamic> activityData =
+                      document.data() as Map<String, dynamic>;
+
+                  return Card(
+                    margin:
+                        EdgeInsets.symmetric(vertical: 10.0, horizontal: 5.0),
+                    child: ListTile(
+                      title: Text(activityData['activityName'] ?? 'No Title'),
+                      subtitle: Text(
+                          '${activityData['location'] ?? 'No Location'} - ${DateFormat('dd/MM/yy').format(DateTime.parse(activityData['selectedDate']))}'),
+                    ),
+                  );
                 },
-              ),
-              ElevatedButton(
-                child: Text("add activity page"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/ActivityAdd');
-                },
-              ),
-              ElevatedButton(
-                child: Text("activity show"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/ActivityShow');
-                },
-              ),
-            ],
-          ),
+              );
+            }
+          },
         ),
         bottomNavigationBar: SafeArea(
           child: BottomNavigationBar(
             selectedItemColor: Colors.grey,
             unselectedItemColor: Colors.grey,
-            type: BottomNavigationBarType
-                .fixed, // Ensure all text labels are visible
+            type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),

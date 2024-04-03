@@ -1,16 +1,185 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'activity.dart';
-import 'tutorial_1.dart';
-import 'weather.dart';
-
+import 'package:http/http.dart' as http;
+import 'package:location/location.dart';
+import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
   final FirebaseFirestore _firestore = FirebaseFirestore.instance;
+  final String apiKey = 'dbc6ddcf06754a25bd1134032242002';
+  String _locationInfo = 'Fetching location...';
+  Map<String, dynamic>? _weatherData;
+
+  @override
+  void initState() {
+    super.initState();
+    _fetchLocationAndWeather();
+  }
+
+  Future<void> _fetchLocationAndWeather() async {
+    Location location = Location();
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+    LocationData? locationData;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        _fetchWeather("Bangkok");
+        return;
+      }
+    }
+
+    permissionGranted = await location.requestPermission();
+    if (permissionGranted != PermissionStatus.granted) {
+      _fetchWeather("Bangkok");
+      return;
+    }
+
+    locationData = await location.getLocation();
+    _fetchWeather(await _getCityNameFromLocation(locationData));
+  }
+
+  Future<String> _getCityNameFromLocation(LocationData locationData) async {
+    try {
+      List<geocoding.Placemark> placemarks =
+          await geocoding.placemarkFromCoordinates(
+        locationData.latitude!,
+        locationData.longitude!,
+      );
+      return placemarks.isNotEmpty
+          ? placemarks.first.locality ?? "Bangkok"
+          : "Bangkok";
+    } catch (e) {
+      print("Failed to get city name: $e");
+      return "Bangkok";
+    }
+  }
+
+  Future<void> _fetchWeather(String location) async {
+    final url = Uri.parse(
+        'https://api.weatherapi.com/v1/current.json?key=$apiKey&q=$location&aqi=no');
+    try {
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        setState(() {
+          _weatherData = json.decode(response.body);
+          _locationInfo = location;
+        });
+      } else {
+        _locationInfo = "Error fetching weather";
+      }
+    } catch (e) {
+      _locationInfo = "Error fetching weather";
+    }
+  }
 
   Future<List<DocumentSnapshot>> _getActivities() async {
-    QuerySnapshot querySnapshot = await _firestore.collection('Activity').get();
+    var userId = FirebaseAuth.instance.currentUser?.uid;
+    QuerySnapshot querySnapshot = await _firestore
+        .collection('users')
+        .doc(userId)
+        .collection('activities')
+        .get();
     return querySnapshot.docs;
+  }
+
+  Future<Map<String, dynamic>?> _fetchWeatherForActivity(
+      String location, DateTime date) async {
+    // Format the date as required by your weather API, assuming 'yyyy-MM-dd'
+    final String formattedDate = DateFormat('yyyy-MM-dd').format(date);
+
+    // Construct the URL with the location and date. This depends on your API's capabilities
+    final url = Uri.parse(
+        'https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$location&dt=$formattedDate');
+
+    try {
+      final response = await http.get(url);
+      if (response.statusCode == 200) {
+        // Assuming the API returns JSON data
+        return json.decode(response.body);
+      } else {
+        print("Failed to fetch weather data: ${response.statusCode}");
+        return null;
+      }
+    } catch (e) {
+      print("Error fetching weather data: $e");
+      return null;
+    }
+  }
+
+  Widget _buildWeatherCard(double fem, double ffem) {
+    if (_weatherData == null) {
+      return Center(child: CircularProgressIndicator());
+    } else {
+      String condition =
+          _weatherData!["current"]["condition"]["text"] ?? 'Not available';
+      String tempC = "${_weatherData!["current"]["temp_c"]}°C";
+      String cityName = _weatherData!["location"]["name"] ?? 'Unknown location';
+
+      return Card(
+        color: Color(0xffFAFAFB),
+        margin: EdgeInsets.symmetric(vertical: 10.0 * ffem),
+        child: Padding(
+          padding: EdgeInsets.all(16.0 * fem),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                'Weather in $cityName',
+                style: TextStyle(
+                  fontSize: 20 * ffem,
+                  fontFamily: 'Nunito',
+                  fontWeight: FontWeight.w700,
+                  color: Color(0xff484848),
+                ),
+              ),
+              SizedBox(height: 8.0 * ffem),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
+                    children: [
+                      Icon(Icons.wb_sunny,
+                          size: 24 *
+                              fem), // Example icon, adjust based on actual condition
+                      SizedBox(width: 8 * fem),
+                      Text(
+                        condition,
+                        style: TextStyle(
+                          fontSize: 18 * ffem,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.w500,
+                          color: Color(0xff484848),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Text(
+                    tempC,
+                    style: TextStyle(
+                      fontSize: 18 * ffem,
+                      fontFamily: 'Nunito',
+                      fontWeight: FontWeight.w500,
+                      color: Color(0xff000000),
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+      );
+    }
   }
 
   @override
@@ -29,12 +198,13 @@ class HomePage extends StatelessWidget {
           color: Color(0xff000000),
         ),
         backgroundColor: Color(0xFFF1F1F1),
+        elevation: 0,
         actions: [
           IconButton(
             icon: Image.asset(
-                'assets/icon/settings.png',
-                width: 30 * fem,
-                height: 30 * fem,
+              'assets/icon/settings.png',
+              width: 30 * fem,
+              height: 30 * fem,
             ),
             onPressed: () {
               Navigator.pushReplacementNamed(context, '/UserSetting');
@@ -54,121 +224,18 @@ class HomePage extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text('Weather',
-                      style: TextStyle(
-                        fontSize: 24 * ffem,
-                        fontFamily: 'Nunito',
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff484848),
-                      ),),
+                        style: TextStyle(
+                          fontSize: 24 * ffem,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff484848),
+                        )),
                     Spacer(),
                     TextButton(
                       onPressed: () {
                         Navigator.pushReplacementNamed(context, '/Weather');
                       },
                       child: Text('Check weather >',
-                        style: TextStyle(
-                          fontSize: 14 * ffem,
-                          fontFamily: 'Nunito',
-                          fontWeight: FontWeight.w600,
-                          color: Color(0xffB8B8B8),
-                        )),
-                    ),
-                  ],
-                ),
-              ),
-              Card(
-                color: Color(0xffFAFAFB),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0 * fem),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      SizedBox(height: 5 * fem),
-                      Row(
-                        children: [
-                          SizedBox(width: 20 * fem),
-                          Text('26/02/2024',
-                              style: TextStyle(
-                                fontSize: 18 * ffem,
-                                fontFamily: 'Nunito',
-                                fontWeight: FontWeight.w600,
-                                color: Color(0xff000000),
-                          )),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              SizedBox(height: 85 * ffem),
-                              Row(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                mainAxisSize: MainAxisSize.min,
-                                children: <Widget>[
-                                  SizedBox(width: 20 * fem),
-                                  Icon(Icons.cloud, size: 30 * fem),
-                                  SizedBox(width: 10 * fem),
-                                  Text('Cloudy', textAlign: TextAlign.right,
-                                      style: TextStyle(
-                                        fontSize: 20 * ffem,
-                                        fontFamily: 'Nunito',
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xff000000),
-                                      )),
-                                ],
-                              ),
-                            ],
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              Text('45°', textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    fontSize: 64 * ffem,
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w400,
-                                    color: Color(0xff000000),
-                                  )
-                              ),
-                              Text('30 / 50 °C', textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    fontSize: 14 * ffem,
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff000000),
-                                  )),
-                            ],
-                          )
-                        ],
-                      ),
-                      SizedBox(height: 5 * ffem),
-                    ],
-                  ),
-                ),
-              ),
-
-              // Activity Card
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 20 * ffem),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text('Today Activity',
-                      style: TextStyle(
-                        fontSize: 24 * ffem,
-                        fontFamily: 'Nunito',
-                        fontWeight: FontWeight.w700,
-                        color: Color(0xff484848),
-                      ),),
-                    Spacer(),
-                    TextButton(
-                      onPressed: () {
-                        Navigator.pushReplacementNamed(context, '/Activity');
-                      },
-                      child: Text('Activity >',
                           style: TextStyle(
                             fontSize: 14 * ffem,
                             fontFamily: 'Nunito',
@@ -179,61 +246,94 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Card(
-                color: Color(0xffFAFAFB),
-                child: Padding(
-                  padding: EdgeInsets.all(8.0 * fem),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        children: [
-                          SizedBox(width: 20 * ffem),
-                          Image.asset(
-                            'assets/icon/calendar.png',
-                            width: 40 * fem,
-                            height: 40 * fem,
-                          ),
-                          SizedBox(width: 25 * ffem),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              SizedBox(height: 5 * ffem),
-                              Text('Camping', textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    fontSize: 20 * ffem,
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w600,
-                                    color: Color(0xff000000),
-                                  )
-                              ),
-                              Text('Mae Sot', textAlign: TextAlign.right,
-                                  style: TextStyle(
-                                    fontSize: 16 * ffem,
-                                    fontFamily: 'Nunito',
-                                    fontWeight: FontWeight.w500,
-                                    color: Color(0xff000000),
-                                  )
-                              ),
-                              SizedBox(height: 5 * ffem),
-                              // Text('30 / 50 °C', textAlign: TextAlign.right),
-                            ],
-                          )
-                        ],
-                      ),
-                    ],
-                  ),
+              _buildWeatherCard(fem, ffem),
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 20 * ffem),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('All Activities',
+                        style: TextStyle(
+                          fontSize: 24 * ffem,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.w700,
+                          color: Color(0xff484848),
+                        )),
+                    Spacer(),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(
+                            context, '/ActivityList');
+                      },
+                      child: Text('Activity List >',
+                          style: TextStyle(
+                            fontSize: 14 * ffem,
+                            fontFamily: 'Nunito',
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xffB8B8B8),
+                          )),
+                    ),
+                  ],
                 ),
               ),
+              FutureBuilder<List<DocumentSnapshot>>(
+                future: _getActivities(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasError) {
+                    return Text("Error: ${snapshot.error}");
+                  } else if (snapshot.data!.isEmpty) {
+                    return Text("No activity", style: TextStyle(fontSize: 20));
+                  } else {
+                    // Ensure this list is built correctly with data in scope
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount: snapshot.data!.length,
+                      itemBuilder: (context, index) {
+                        DocumentSnapshot document = snapshot.data![index];
+                        Map<String, dynamic> activityData =
+                            document.data() as Map<String, dynamic>;
+
+                        return GestureDetector(
+                          child: Card(
+                            margin: EdgeInsets.symmetric(vertical: 10.0),
+                            child: Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    activityData['activityName'] ?? 'No Title',
+                                    style: TextStyle(
+                                      fontSize: 20,
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                  SizedBox(height: 8.0),
+                                  Text(
+                                    '${activityData['location'] ?? 'No Location'} - ${DateFormat('dd/MM/yy').format(DateTime.parse(activityData['selectedDate']))}',
+                                    style: TextStyle(fontSize: 18),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  }
+                },
+              )
             ],
           ),
         ),
       ),
       bottomNavigationBar: SafeArea(
         child: BottomNavigationBar(
-          selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.black,
+          selectedItemColor: Colors.grey,
+          unselectedItemColor: Colors.grey,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(

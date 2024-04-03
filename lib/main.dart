@@ -20,6 +20,7 @@ import 'views/aboutus.dart';
 import 'views/tutorial_2.dart';
 import 'views/tutorial_3.dart';
 import 'views/tutorial_4.dart';
+import 'views/activity_list.dart';
 
 void main() async {
   WidgetsFlutterBinding
@@ -44,10 +45,10 @@ class MyApp extends StatelessWidget {
       initialRoute: '/',
       routes: {
         '/': (context) => StartPage(),
+        '/Activity': (context) => ActivityPage(),
         '/ActivityAdd': (context) => ActivityAddPage(),
         '/ActivityList': (context) => ActivityListPage(),
         '/ActivityShow': (context) => ActivityShowPage(),
-        '/Activity': (context) => ActivityPage(),
         '/Home': (context) => HomePage(),
         '/Login': (context) => LoginPage(),
         '/UserSetting': (context) => UserSettingPage(),

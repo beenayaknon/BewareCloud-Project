@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class ActivityConfirmPage extends StatelessWidget {
   final String activityName;
@@ -13,6 +15,29 @@ class ActivityConfirmPage extends StatelessWidget {
     required this.location,
     required this.selectedDate,
   }) : super(key: key);
+
+  void _addActivityToFirestore(BuildContext context) async {
+    var userId = FirebaseAuth.instance.currentUser?.uid;
+    var firestore = FirebaseFirestore.instance;
+
+    await firestore
+        .collection('users')
+        .doc(userId)
+        .collection('activities')
+        .add({
+      'activityName': activityName,
+      'description': description,
+      'location': location,
+      'selectedDate': selectedDate.toIso8601String(),
+    }).then((value) {
+      // Navigate to a different page or show a success message
+      Navigator.pushReplacementNamed(
+          context, '/Activity'); // Adjust this route as necessary
+    }).catchError((error) {
+      // Show an error message or handle the error
+      print("Error adding document: $error");
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,14 +65,9 @@ class ActivityConfirmPage extends StatelessWidget {
               subtitle: Text('${selectedDate.toLocal()}'.split(' ')[0]),
             ),
             SizedBox(height: 20),
-            Text('Confirm add activity?',
-                style: Theme.of(context).textTheme.headline6),
-            SizedBox(height: 20),
             ElevatedButton(
               child: Text("Confirm"),
-              onPressed: () {
-                Navigator.pushReplacementNamed(context, '/Activity');
-              },
+              onPressed: () => _addActivityToFirestore(context),
             ),
             ElevatedButton(
               child: Text("Cancel"),
