@@ -78,6 +78,7 @@ flutter:
     - assets/logo/bewareclouddy.png
     - assets/icon/back.png
     - assets/icon/settings.png
+    - assets/icon/calendar.png
     - assets/tutorials/Activity_page.png
     - assets/tutorials/Home_page.png
     - assets/tutorials/Setting_page.png

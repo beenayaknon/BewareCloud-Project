@@ -21,16 +21,8 @@
       <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/aboutus.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/aboutus.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/register.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/register.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/start.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/tutorial_1.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/tutorial_1.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/tutorial_2.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/tutorial_2.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/user_setting.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/user_setting.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />

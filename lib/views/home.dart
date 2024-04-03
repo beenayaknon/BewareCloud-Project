@@ -53,69 +53,178 @@ class HomePage extends StatelessWidget {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    // Previous Button
-                    Text('Weather', style: TextStyle(fontSize: 24 * ffem)),
+                    Text('Weather',
+                      style: TextStyle(
+                        fontSize: 24 * ffem,
+                        fontFamily: 'Nunito',
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff484848),
+                      ),),
                     Spacer(),
-                    // Next Button
                     TextButton(
-                      onPressed: () {},
-                      child: Text('Check weather >'),
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/Weather');
+                      },
+                      child: Text('Check weather >',
+                        style: TextStyle(
+                          fontSize: 14 * ffem,
+                          fontFamily: 'Nunito',
+                          fontWeight: FontWeight.w600,
+                          color: Color(0xffB8B8B8),
+                        )),
                     ),
                   ],
                 ),
               ),
               Card(
+                color: Color(0xffFAFAFB),
                 child: Padding(
                   padding: EdgeInsets.all(8.0 * fem),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      SizedBox(height: 4 * ffem),
+                      SizedBox(height: 5 * fem),
                       Row(
                         children: [
-                          Icon(Icons.cloud, size: 24 * fem),
-                          SizedBox(width: 8 * fem),
-                          Text('26/02/2024', style: TextStyle(fontSize: 18 * ffem)),
+                          SizedBox(width: 20 * fem),
+                          Text('26/02/2024',
+                              style: TextStyle(
+                                fontSize: 18 * ffem,
+                                fontFamily: 'Nunito',
+                                fontWeight: FontWeight.w600,
+                                color: Color(0xff000000),
+                          )),
                         ],
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text('45°', style: TextStyle(fontSize: 64 * ffem)),
-                          Text('Cloudy\n30 / 50 °C', textAlign: TextAlign.right),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 85 * ffem),
+                              Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisSize: MainAxisSize.min,
+                                children: <Widget>[
+                                  SizedBox(width: 20 * fem),
+                                  Icon(Icons.cloud, size: 30 * fem),
+                                  SizedBox(width: 10 * fem),
+                                  Text('Cloudy', textAlign: TextAlign.right,
+                                      style: TextStyle(
+                                        fontSize: 20 * ffem,
+                                        fontFamily: 'Nunito',
+                                        fontWeight: FontWeight.w500,
+                                        color: Color(0xff000000),
+                                      )),
+                                ],
+                              ),
+                            ],
+                          ),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Text('45°', textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    fontSize: 64 * ffem,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w400,
+                                    color: Color(0xff000000),
+                                  )
+                              ),
+                              Text('30 / 50 °C', textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    fontSize: 14 * ffem,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff000000),
+                                  )),
+                            ],
+                          )
+                        ],
+                      ),
+                      SizedBox(height: 5 * ffem),
+                    ],
+                  ),
+                ),
+              ),
+
+              // Activity Card
+              Padding(
+                padding: EdgeInsets.symmetric(vertical: 20 * ffem),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text('Today Activity',
+                      style: TextStyle(
+                        fontSize: 24 * ffem,
+                        fontFamily: 'Nunito',
+                        fontWeight: FontWeight.w700,
+                        color: Color(0xff484848),
+                      ),),
+                    Spacer(),
+                    TextButton(
+                      onPressed: () {
+                        Navigator.pushReplacementNamed(context, '/Activity');
+                      },
+                      child: Text('Activity >',
+                          style: TextStyle(
+                            fontSize: 14 * ffem,
+                            fontFamily: 'Nunito',
+                            fontWeight: FontWeight.w600,
+                            color: Color(0xffB8B8B8),
+                          )),
+                    ),
+                  ],
+                ),
+              ),
+              Card(
+                color: Color(0xffFAFAFB),
+                child: Padding(
+                  padding: EdgeInsets.all(8.0 * fem),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        children: [
+                          SizedBox(width: 20 * ffem),
+                          Image.asset(
+                            'assets/icon/calendar.png',
+                            width: 40 * fem,
+                            height: 40 * fem,
+                          ),
+                          SizedBox(width: 25 * ffem),
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              SizedBox(height: 5 * ffem),
+                              Text('Camping', textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    fontSize: 20 * ffem,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w600,
+                                    color: Color(0xff000000),
+                                  )
+                              ),
+                              Text('Mae Sot', textAlign: TextAlign.right,
+                                  style: TextStyle(
+                                    fontSize: 16 * ffem,
+                                    fontFamily: 'Nunito',
+                                    fontWeight: FontWeight.w500,
+                                    color: Color(0xff000000),
+                                  )
+                              ),
+                              SizedBox(height: 5 * ffem),
+                              // Text('30 / 50 °C', textAlign: TextAlign.right),
+                            ],
+                          )
                         ],
                       ),
                     ],
                   ),
                 ),
-              ),
-              SizedBox(height: 16 * ffem),
-
-              // Activity Card
-              Text('Today Activity', style: TextStyle(fontSize: 24 * ffem)),
-              SizedBox(height: 8 * ffem),
-              FutureBuilder(
-                future: _getActivities(),
-                builder: (BuildContext context, AsyncSnapshot<List<DocumentSnapshot>> snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(child: CircularProgressIndicator());
-                  } else if (snapshot.hasError) {
-                    return Center(child: Text('Error: ${snapshot.error}'));
-                  } else {
-                    // Build a list view of all activities
-                    return ListView(
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(), // to disable ListView's scrolling
-                      children: snapshot.data!.map((doc) {
-                        return ListTile(
-                          leading: Icon(Icons.directions_run),
-                          title: Text(doc['Act_title']),
-                          subtitle: Text(doc['Act_desc']),
-                        );
-                      }).toList(),
-                    );
-                  }
-                },
               ),
             ],
           ),

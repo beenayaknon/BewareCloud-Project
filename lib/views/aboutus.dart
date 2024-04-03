@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 class AboutusPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    // Constants for scaling based on your design system
     const double fem = 1.0;
     const double ffem = 1.0;
 
@@ -16,7 +15,7 @@ class AboutusPage extends StatelessWidget {
               width:25 * fem,
               height: 25 * fem,
               fit: BoxFit.cover
-          ), // Back icon path
+          ),
           onPressed: () {
             Navigator.pushReplacementNamed(context, '/UserSetting');
           },
@@ -39,20 +38,20 @@ class AboutusPage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            SizedBox(height: 60 * fem), // Adjust space as needed
+            SizedBox(height: 60 * fem),
             Image.asset(
               'assets/logo/bewareclouddy.png',
               width: 202 * fem,
               height: 202 * fem,
               fit: BoxFit.cover,
             ),
-            SizedBox(height: 40 * fem), // Adjust space as needed
+            SizedBox(height: 40 * fem),
             Text(
               'BewareCloud',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontFamily: 'Nunito',
-                fontSize: 32 * ffem, // Reduced font size for the title
+                fontSize: 32 * ffem,
                 fontWeight: FontWeight.w700,
                 color: Color(0xff000000),
               ),
