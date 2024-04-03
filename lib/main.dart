@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'firebase_options.dart';
 
 import 'views/activity_addactivity.dart';
@@ -20,13 +22,16 @@ import 'views/tutorial_3.dart';
 import 'views/tutorial_4.dart';
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding
+      .ensureInitialized(); // Ensure plugin services are initialized
   await Firebase.initializeApp(
+    // Initialize Firebase
     options: DefaultFirebaseOptions.currentPlatform,
   );
+  await initializeDateFormatting(
+      'en_EN', null); // Initialize locale data for 'en_EN'
   runApp(MyApp());
 }
-
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -55,7 +60,14 @@ class MyApp extends StatelessWidget {
         '/Tutorial3': (context) => Tutorial3Page(),
         '/Tutorial4': (context) => Tutorial4Page(),
       },
+      localizationsDelegates: [
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: [
+        const Locale('en', 'EN'),
+      ],
     );
   }
 }
-
