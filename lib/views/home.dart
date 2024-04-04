@@ -6,6 +6,7 @@ import 'package:geocoding/geocoding.dart' as geocoding;
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
+import 'activity_detail.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -98,14 +99,12 @@ class _HomePageState extends State<HomePage> {
     // Format the date as required by your weather API, assuming 'yyyy-MM-dd'
     final String formattedDate = DateFormat('yyyy-MM-dd').format(date);
 
-    // Construct the URL with the location and date. This depends on your API's capabilities
     final url = Uri.parse(
         'https://api.weatherapi.com/v1/forecast.json?key=$apiKey&q=$location&dt=$formattedDate');
 
     try {
       final response = await http.get(url);
       if (response.statusCode == 200) {
-        // Assuming the API returns JSON data
         return json.decode(response.body);
       } else {
         print("Failed to fetch weather data: ${response.statusCode}");
@@ -149,9 +148,7 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.wb_sunny,
-                          size: 24 *
-                              fem), // Example icon, adjust based on actual condition
+                      Icon(Icons.wb_sunny, size: 24 * fem),
                       SizedBox(width: 8 * fem),
                       Text(
                         condition,
@@ -252,7 +249,7 @@ class _HomePageState extends State<HomePage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text('All Activities',
+                    Text('Activities',
                         style: TextStyle(
                           fontSize: 24 * ffem,
                           fontFamily: 'Nunito',
@@ -262,8 +259,7 @@ class _HomePageState extends State<HomePage> {
                     Spacer(),
                     TextButton(
                       onPressed: () {
-                        Navigator.pushReplacementNamed(
-                            context, '/ActivityList');
+                        Navigator.pushReplacementNamed(context, '/Activity');
                       },
                       child: Text('Activity List >',
                           style: TextStyle(
@@ -297,6 +293,17 @@ class _HomePageState extends State<HomePage> {
                             document.data() as Map<String, dynamic>;
 
                         return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => ActivityDetailPage(
+                                  activityData: activityData,
+                                  activityId: document.id,
+                                ),
+                              ),
+                            );
+                          },
                           child: Card(
                             margin: EdgeInsets.symmetric(vertical: 10.0),
                             child: Padding(

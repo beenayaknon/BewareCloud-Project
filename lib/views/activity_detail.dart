@@ -27,7 +27,7 @@ class ActivityDetailPage extends StatelessWidget {
           .doc(activityId)
           .delete();
 
-      Navigator.pushReplacementNamed(context, '/ActivityList');
+      Navigator.pushReplacementNamed(context, '/Activity');
     } catch (error) {
       print(error); // For debugging purposes
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(

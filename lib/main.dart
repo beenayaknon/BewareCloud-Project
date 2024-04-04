@@ -5,8 +5,6 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'firebase_options.dart';
 
 import 'views/activity_addactivity.dart';
-import 'views/activity_list.dart';
-import 'views/activity_show.dart';
 import 'views/activity.dart';
 import 'views/home.dart';
 import 'views/login.dart';
@@ -20,7 +18,6 @@ import 'views/aboutus.dart';
 import 'views/tutorial_2.dart';
 import 'views/tutorial_3.dart';
 import 'views/tutorial_4.dart';
-import 'views/activity_list.dart';
 import 'views/activity_detail.dart';
 
 void main() async {
@@ -48,8 +45,6 @@ class MyApp extends StatelessWidget {
         '/': (context) => StartPage(),
         '/Activity': (context) => ActivityPage(),
         '/ActivityAdd': (context) => ActivityAddPage(),
-        '/ActivityList': (context) => ActivityListPage(),
-        '/ActivityShow': (context) => ActivityShowPage(),
         '/Home': (context) => HomePage(),
         '/Login': (context) => LoginPage(),
         '/UserSetting': (context) => UserSettingPage(),

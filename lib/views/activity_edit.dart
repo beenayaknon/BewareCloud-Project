@@ -77,11 +77,11 @@ class _ActivityEditPageState extends State<ActivityEditPage> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Activity updated successfully')));
-        Navigator.pushReplacementNamed(context, '/ActivityList');
+        Navigator.pushReplacementNamed(context, '/Activity');
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Error updating activity: $error')));
-        Navigator.pushReplacementNamed(context, '/ActivityList');
+        Navigator.pushReplacementNamed(context, '/Activity');
       }
     }
   }
