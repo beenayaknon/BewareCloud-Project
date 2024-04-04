@@ -21,6 +21,7 @@ import 'views/tutorial_2.dart';
 import 'views/tutorial_3.dart';
 import 'views/tutorial_4.dart';
 import 'views/activity_list.dart';
+import 'views/activity_detail.dart';
 
 void main() async {
   WidgetsFlutterBinding

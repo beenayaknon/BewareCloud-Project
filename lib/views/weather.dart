@@ -25,10 +25,8 @@ class LocationService {
     return locationData;
   }
 
-  // Use this method to get the city name from location data
   Future<String> getCityNameFromLocation(LocationData locationData) async {
     try {
-      // Check if latitude and longitude are not null
       if (locationData.latitude == null || locationData.longitude == null) {
         return "Bangkok"; // Default to "Bangkok" if location data is incomplete
       }
@@ -43,12 +41,10 @@ class LocationService {
         geocoding.Placemark place = placemarks.first;
         return "${place.locality}, ${place.country}";
       } else {
-        return "Bangkok"; // Default to "Bangkok" if no placemark is found
+        return "Bangkok";
       }
     } catch (e) {
-      // Log the error if needed
-      // print("Failed to get city name: $e");
-      return "Bangkok"; // Default to "Bangkok" in case of any exception
+      return "Bangkok";
     }
   }
 }
@@ -82,36 +78,29 @@ class _WeatherPageState extends State<WeatherPage> {
             cityName =
                 await _locationService.getCityNameFromLocation(locationData);
           } catch (e) {
-            // If an error occurs while getting the city name, use "Bangkok" as default
             cityName = "Bangkok";
           }
           setState(() {
             _currentLocation = locationData;
-            _locationInfo =
-                cityName; // Now storing the city name or "Bangkok" if an error occurred
+            _locationInfo = cityName;
           });
         } else {
           setState(() {
-            _locationInfo =
-                "Bangkok"; // Default to "Bangkok" if location data is incomplete
+            _locationInfo = "Bangkok";
           });
         }
       } catch (e) {
         setState(() {
-          _locationInfo =
-              "Bangkok"; // Default to "Bangkok" on failure to get location
+          _locationInfo = "Bangkok";
         });
       }
     } else {
       setState(() {
-        _locationInfo =
-            "Bangkok"; // Default to "Bangkok" if location permission not granted
+        _locationInfo = "Bangkok";
       });
     }
   }
 
-  // final String city = 'Bangkok';
-  // Fetch current weather data
   Future<Map<String, dynamic>> fetchCurrentWeather() async {
     final url = Uri.parse(
         'https://api.weatherapi.com/v1/current.json?key=$apiKey&q=$_locationInfo&aqi=no');
@@ -154,7 +143,6 @@ class _WeatherPageState extends State<WeatherPage> {
                     return Text(
                         'Error fetching current weather: ${snapshot.error}');
                   } else {
-                    // Assuming data is returned in the desired format
                     var currentWeather = snapshot.data!;
                     var location = currentWeather['location']['name'];
                     var tempC = currentWeather['current']['temp_c'];
@@ -164,7 +152,6 @@ class _WeatherPageState extends State<WeatherPage> {
                     var condition =
                         currentWeather['current']['condition']['text'];
 
-// Displaying the current weather data
                     return Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Column(
@@ -212,8 +199,7 @@ class _WeatherPageState extends State<WeatherPage> {
           child: BottomNavigationBar(
             selectedItemColor: Colors.grey,
             unselectedItemColor: Colors.grey,
-            type: BottomNavigationBarType
-                .fixed, // Ensure all text labels are visible
+            type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
