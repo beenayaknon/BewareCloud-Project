@@ -24,11 +24,12 @@ class ActivityDetailPage extends StatelessWidget {
           .delete();
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text('Activity deleted successfully')));
-      Navigator.of(context).pop(); // Go back to the previous screen
+      Navigator.pushReplacementNamed(context, '/Activity');
     } catch (error) {
       print(error); // For debugging purposes
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Error deleting activity. Please try again.')));
+      Navigator.pushReplacementNamed(context, '/Activity');
     }
   }
 

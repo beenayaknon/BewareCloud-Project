@@ -62,17 +62,11 @@ class _ActivityEditPageState extends State<ActivityEditPage> {
     if (_formKey.currentState!.validate()) {
       try {
         String userId = FirebaseAuth.instance.currentUser!.uid;
-        var activityDoc = FirebaseFirestore.instance
+        DocumentReference activityDoc = FirebaseFirestore.instance
+            .collection('users')
+            .doc(userId)
             .collection('activities')
             .doc(widget.activityId);
-
-        // Check if the document exists
-        var docSnapshot = await activityDoc.get();
-        if (!docSnapshot.exists) {
-          ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(content: Text('Activity does not exist.')));
-          return;
-        }
 
         await activityDoc.update({
           'activityName': _nameController.text,
@@ -83,10 +77,11 @@ class _ActivityEditPageState extends State<ActivityEditPage> {
         });
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Activity updated successfully')));
-        Navigator.of(context).pop();
+        Navigator.pushReplacementNamed(context, '/Activity');
       } catch (error) {
         ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(content: Text('Error updating activity: $error')));
+        Navigator.pushReplacementNamed(context, '/Activity');
       }
     }
   }
