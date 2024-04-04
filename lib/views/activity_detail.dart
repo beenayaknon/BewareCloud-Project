@@ -18,18 +18,20 @@ class ActivityDetailPage extends StatelessWidget {
 
   void _deleteActivity(BuildContext context) async {
     try {
+      String userId = FirebaseAuth.instance.currentUser!.uid;
+
       await FirebaseFirestore.instance
+          .collection('users')
+          .doc(userId)
           .collection('activities')
           .doc(activityId)
           .delete();
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text('Activity deleted successfully')));
-      Navigator.pushReplacementNamed(context, '/Activity');
+
+      Navigator.pushReplacementNamed(context, '/ActivityList');
     } catch (error) {
       print(error); // For debugging purposes
       ScaffoldMessenger.of(context).showSnackBar(SnackBar(
           content: Text('Error deleting activity. Please try again.')));
-      Navigator.pushReplacementNamed(context, '/Activity');
     }
   }
 
@@ -98,7 +100,6 @@ class ActivityDetailPage extends StatelessWidget {
                           TextButton(
                             onPressed: () {
                               _deleteActivity(context);
-                              Navigator.of(context).pop(); // Dismiss the dialog
                             },
                             child: Text('Delete'),
                           ),
