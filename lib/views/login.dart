@@ -124,7 +124,7 @@ class _LoginPageState extends State<LoginPage> {
                 ElevatedButton(
                   onPressed: _loginUser,
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xffbad6eb),
+                    backgroundColor: Color(0xff18378C),
                     minimumSize: Size(350.0, 60.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50 * fem),

@@ -10,20 +10,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b769e2ed-8b18-4800-997b-88563c71c83f" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/icon/back.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/icon/settings.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/tutorials/Activity_page.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/tutorials/Home_page.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/tutorials/Setting_page.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/assets/tutorials/Weather_page.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/views/tutorial_3.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/views/tutorial_4.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitattributes" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/views/aboutus.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/aboutus.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/views/home.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/home.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/login.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/login.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/views/start.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/views/start.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

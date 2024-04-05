@@ -46,7 +46,7 @@ class StartPage extends StatelessWidget {
                 Navigator.pushReplacementNamed(context, '/Login');
               },
               style: TextButton.styleFrom(
-                backgroundColor: Color(0xffbad6eb),
+                backgroundColor: Color(0xff18378C),
                 minimumSize: Size(350.0, 60.0),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50 * fem),
@@ -60,7 +60,7 @@ class StartPage extends StatelessWidget {
                   fontSize: 16 * ffem,
                   fontWeight: FontWeight.w700,
                   height: 1.3625 * ffem / fem,
-                  color: Color(0xff000000),
+                  color: Color(0xffffffff),
                 ),
               ),
             ),

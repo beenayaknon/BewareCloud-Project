@@ -126,7 +126,7 @@ class _HomePageState extends State<HomePage> {
       String cityName = _weatherData!["location"]["name"] ?? 'Unknown location';
 
       return Card(
-        color: Color(0xffFAFAFB),
+        color: Color(0xffffffff),
         margin: EdgeInsets.symmetric(vertical: 10.0 * ffem),
         child: Padding(
           padding: EdgeInsets.all(16.0 * fem),
@@ -339,8 +339,8 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: SafeArea(
         child: BottomNavigationBar(
-          selectedItemColor: Colors.grey,
-          unselectedItemColor: Colors.grey,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(
