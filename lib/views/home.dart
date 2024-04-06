@@ -7,6 +7,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'activity_detail.dart';
+import 'package:weather_icons/weather_icons.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -124,9 +125,15 @@ class _HomePageState extends State<HomePage> {
           _weatherData!["current"]["condition"]["text"] ?? 'Not available';
       String tempC = "${_weatherData!["current"]["temp_c"]}°C";
       String cityName = _weatherData!["location"]["name"] ?? 'Unknown location';
+      String iconUrl =
+          _weatherData!["current"]["condition"]["icon"] ?? 'Not available';
+
+      if (!iconUrl.startsWith('http')) {
+        iconUrl = 'http:$iconUrl';
+      }
 
       return Card(
-        color: Color(0xffffffff),
+        color: Color(0xffFEFEFE),
         margin: EdgeInsets.symmetric(vertical: 10.0 * ffem),
         child: Padding(
           padding: EdgeInsets.all(16.0 * fem),
@@ -139,7 +146,7 @@ class _HomePageState extends State<HomePage> {
                   fontSize: 20 * ffem,
                   fontFamily: 'Nunito',
                   fontWeight: FontWeight.w700,
-                  color: Color(0xff484848),
+                  color: Color(0xff000000),
                 ),
               ),
               SizedBox(height: 8.0 * ffem),
@@ -148,15 +155,17 @@ class _HomePageState extends State<HomePage> {
                 children: [
                   Row(
                     children: [
-                      Icon(Icons.wb_sunny, size: 24 * fem),
+                      Image.network(iconUrl, width: 35,
+                          height: 35,
+                          fit: BoxFit.cover),
                       SizedBox(width: 8 * fem),
                       Text(
                         condition,
                         style: TextStyle(
                           fontSize: 18 * ffem,
                           fontFamily: 'Nunito',
-                          fontWeight: FontWeight.w500,
-                          color: Color(0xff484848),
+                          fontWeight: FontWeight.w400,
+                          color: Color(0xff000000),
                         ),
                       ),
                     ],
@@ -164,7 +173,7 @@ class _HomePageState extends State<HomePage> {
                   Text(
                     tempC,
                     style: TextStyle(
-                      fontSize: 18 * ffem,
+                      fontSize: 22 * ffem,
                       fontFamily: 'Nunito',
                       fontWeight: FontWeight.w500,
                       color: Color(0xff000000),
@@ -175,6 +184,7 @@ class _HomePageState extends State<HomePage> {
             ],
           ),
         ),
+        elevation: 0,
       );
     }
   }
@@ -185,16 +195,16 @@ class _HomePageState extends State<HomePage> {
     const double ffem = 1.0;
 
     return Scaffold(
-      backgroundColor: Color(0xFFF1F1F1),
+      backgroundColor: Color(0xFFF4F4F4),
       appBar: AppBar(
-        title: Text('Home', style: TextStyle(color: Colors.black)),
+        title: Text('Home'),
         titleTextStyle: TextStyle(
           fontFamily: 'Heebo',
           fontSize: 34 * ffem,
           fontWeight: FontWeight.w800,
           color: Color(0xff000000),
         ),
-        backgroundColor: Color(0xFFF1F1F1),
+        backgroundColor: Color(0xFFF4F4F4),
         elevation: 0,
         actions: [
           IconButton(
@@ -294,6 +304,7 @@ class _HomePageState extends State<HomePage> {
 
                         return GestureDetector(
                           onTap: () {
+                            /*
                             Navigator.push(
                               context,
                               MaterialPageRoute(
@@ -303,8 +314,10 @@ class _HomePageState extends State<HomePage> {
                                 ),
                               ),
                             );
+                            */
                           },
                           child: Card(
+                            color: Color(0xffFEFEFE),
                             margin: EdgeInsets.symmetric(vertical: 10.0),
                             child: Padding(
                               padding: EdgeInsets.all(16.0),
@@ -326,6 +339,7 @@ class _HomePageState extends State<HomePage> {
                                 ],
                               ),
                             ),
+                            elevation: 0,
                           ),
                         );
                       },
@@ -339,6 +353,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: SafeArea(
         child: BottomNavigationBar(
+          backgroundColor: Color(0xFFffffff),
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
           type: BottomNavigationBarType.fixed,

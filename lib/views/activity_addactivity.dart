@@ -36,20 +36,59 @@ class _ActivityAddPageState extends State<ActivityAddPage> {
 
   @override
   Widget build(BuildContext context) {
+    const double fem = 1.0;
+    const double ffem = 1.0;
+
     return Scaffold(
+      backgroundColor: Color(0xFFF8FAFB),
       appBar: AppBar(
+        leading: IconButton(
+          icon: Image.asset(
+              'assets/icon/back.png',
+              width:25 * fem,
+              height: 25 * fem,
+              fit: BoxFit.cover
+          ),
+          onPressed: () {
+            Navigator.pushReplacementNamed(context, '/Activity');
+          },
+        ),
         title: Text('Add Activity'),
+        titleTextStyle: TextStyle(
+          fontFamily: 'Heebo',
+          fontSize: 34 * ffem,
+          fontWeight: FontWeight.w800,
+          color: Color(0xff000000),
+        ),
+        elevation: 0,
       ),
       body: SingleChildScrollView(
+        padding: EdgeInsets.all(16.0 * fem),
         child: Form(
           key: _formKey,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
               Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.symmetric(vertical: 8.0),
                 child: TextFormField(
-                  decoration: InputDecoration(labelText: 'Activity Name'),
+                  decoration: InputDecoration(
+                    labelText: 'Activity Name',
+                    prefixIcon: Icon(Icons.label_outline_rounded, size: 30 * fem, color: Colors.black), // Use your custom icon
+                    labelStyle: TextStyle(
+                      fontFamily: 'Heebo',
+                      fontSize: 16 * ffem,
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black45, width: 1 * fem),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                    ),
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                    ),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Activity name';
@@ -61,6 +100,7 @@ class _ActivityAddPageState extends State<ActivityAddPage> {
                   },
                 ),
               ),
+              SizedBox(height: 5 * ffem),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TableCalendar(
@@ -85,10 +125,27 @@ class _ActivityAddPageState extends State<ActivityAddPage> {
                   },
                 ),
               ),
+              SizedBox(height: 5 * ffem),
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  decoration: InputDecoration(labelText: 'Description'),
+                  decoration: InputDecoration(
+                    labelText: 'Description',
+                    prefixIcon: Icon(Icons.description_outlined, size: 30 * fem, color: Colors.black), // Use your custom icon
+                    labelStyle: TextStyle(
+                      fontFamily: 'Heebo',
+                      fontSize: 16 * ffem,
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black45, width: 1 * fem),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                    ),
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                    ),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Description';
@@ -103,7 +160,23 @@ class _ActivityAddPageState extends State<ActivityAddPage> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: TextFormField(
-                  decoration: InputDecoration(labelText: 'Location (City)'),
+                  decoration: InputDecoration(
+                    labelText: 'Lacation',
+                    prefixIcon: Icon(Icons.location_on_outlined, size: 30 * fem, color: Colors.black), // Use your custom icon
+                    labelStyle: TextStyle(
+                      fontFamily: 'Heebo',
+                      fontSize: 16 * ffem,
+                    ),
+                    enabledBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Colors.black45, width: 1 * fem),
+                    ),
+                    focusedBorder: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                    ),
+                    border: UnderlineInputBorder(
+                      borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                    ),
+                  ),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Bangkok';
@@ -115,15 +188,26 @@ class _ActivityAddPageState extends State<ActivityAddPage> {
                   },
                 ),
               ),
-              ElevatedButton(
-                child: Text("Cancel"),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/Activity');
-                },
-              ),
-              ElevatedButton(
-                child: Text("Add New Activity"),
+              SizedBox(height: 10 * ffem),
+              TextButton(
                 onPressed: _submitForm,
+                style: TextButton.styleFrom(
+                  backgroundColor: Color(0xff18378C),
+                  minimumSize: Size(350.0, 60.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50 * fem),
+                  ),
+                ),
+                child: Text(
+                  'Add New Activity',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontSize: 16 * ffem,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xffffffff),
+                  ),
+                ),
               ),
             ],
           ),

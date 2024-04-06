@@ -126,14 +126,25 @@ class _WeatherPageState extends State<WeatherPage> {
 
   @override
   Widget build(BuildContext context) {
+    const double fem = 1.0;
+    const double ffem = 1.0;
+
     return Scaffold(
+        backgroundColor: Color(0xFFF8FAFB),
         appBar: AppBar(
-          title: Text('Weather Info'),
+          title: Text('Weather'),
+          titleTextStyle: TextStyle(
+            fontFamily: 'Heebo',
+            fontSize: 36 * ffem,
+            fontWeight: FontWeight.w700,
+            color: Color(0xff000000),
+          ),
+          backgroundColor: Color(0xfffafafb),
         ),
         body: SingleChildScrollView(
           child: Column(
             children: [
-              Text(_locationInfo),
+              //Text(_locationInfo),
               FutureBuilder<Map<String, dynamic>>(
                 future: fetchCurrentWeather(),
                 builder: (context, snapshot) {
@@ -149,41 +160,240 @@ class _WeatherPageState extends State<WeatherPage> {
                     var windKph = currentWeather['current']['wind_kph'];
                     var pressureMb = currentWeather['current']['pressure_mb'];
                     var humidity = currentWeather['current']['humidity'];
+                    var feelslike = currentWeather['current']['feelslike_c'];
                     var condition =
                         currentWeather['current']['condition']['text'];
+                    var iconUrl =
+                    currentWeather['current']['condition']['icon'];
+                    if (!iconUrl.startsWith('http')) {
+                      iconUrl = 'http:$iconUrl';
+                    }
 
                     return Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(30.0),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text('Location: $location',
-                              style: TextStyle(fontSize: 20)),
-                          Text('Temperature: $tempC°C',
-                              style: TextStyle(fontSize: 20)),
-                          Text('Wind: $windKph kph',
-                              style: TextStyle(fontSize: 20)),
-                          Text('Pressure: $pressureMb mb',
-                              style: TextStyle(fontSize: 20)),
-                          Text('Humidity: $humidity%',
-                              style: TextStyle(fontSize: 20)),
-                          Text('$condition', style: TextStyle(fontSize: 20)),
-                          SizedBox(
-                            width: double.infinity,
-                            height: 50.0,
-                            child: ElevatedButton.icon(
-                              icon: Icon(Icons.directions_run),
-                              label: Text("Weather Forecast"),
-                              onPressed: () {
-                                Navigator.pushReplacementNamed(
-                                    context, '/WeatherForecast');
-                              },
-                              style: ElevatedButton.styleFrom(
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
+                          SizedBox(height: 10),
+                          Text('$location',
+                              style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontSize: 20 * ffem,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff000000),)
+                          ),
+                          SizedBox(height: 5),
+                          Text('$tempC°C',
+                              style: TextStyle(
+                                fontFamily: 'Nunito',
+                                fontSize: 26 * ffem,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff000000),)
+                          ),
+                          SizedBox(height: 5),
+                          Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Image.network(iconUrl, width: 35,
+                                    height: 35,
+                                    fit: BoxFit.cover),
+                                Text('$condition',
+                                    style: TextStyle(
+                                      fontFamily: 'Nunito',
+                                      fontSize: 24 * ffem,
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xff000000),)
                                 ),
+                              ]
+                          ),
+                          SizedBox(height: 25),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5 * ffem),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Card(
+                                  color: Color(0xffF0F0F0), // Background color
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20 * fem),
+                                  ),
+                                  child: Container(
+                                    width: 160.0 * fem,
+                                    height: 100.0 * ffem,
+                                    padding: EdgeInsets.all(10 * fem), // Inner padding of Card
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'HUMIDITY',
+                                          style: TextStyle(
+                                            fontFamily: 'Nunito',
+                                            fontSize: 14 * ffem,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xff9d9d9d),
+                                          ),
+                                        ),
+                                        SizedBox(height: 15),
+                                        Text('$humidity%',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito',
+                                              fontSize: 24 * ffem,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xff000000),
+                                            )
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  elevation: 0,
+                                ),
+
+                                // Next Button
+                                Card(
+                                  color: Color(0xffF0F0F0), // Background color
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20 * fem),
+                                  ),
+                                  child: Container(
+                                    width: 160.0 * fem,
+                                    height: 100.0 * ffem,
+                                    padding: EdgeInsets.all(10 * fem), // Inner padding of Card
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          'FEELSLIKE',
+                                          style: TextStyle(
+                                            fontFamily: 'Nunito',
+                                            fontSize: 14 * ffem,
+                                            fontWeight: FontWeight.w500,
+                                            color: Color(0xff9d9d9d),
+                                          ),
+                                        ),
+                                        SizedBox(height: 15),
+                                        Text('$feelslike°C',
+                                            style: TextStyle(
+                                              fontFamily: 'Nunito',
+                                              fontSize: 24 * ffem,
+                                              fontWeight: FontWeight.w500,
+                                              color: Color(0xff000000),)
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  elevation: 0,
+                                ),
+                              ],
+                            ),
+                          ),
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 5 * ffem),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Card(
+                                  color: Color(0xffF0F0F0), // Background color
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20 * fem),
+                                  ),
+                                  child: Container(
+                                    width: 160.0 * fem,
+                                    height: 100.0 * ffem,
+                                    padding: EdgeInsets.all(10 * fem), // Inner padding of Card
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text('WIND',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito',
+                                                fontSize: 14 * ffem,
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xff9d9d9d),)
+                                          ),
+                                          SizedBox(height: 15),
+                                          Text('$windKph kph',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito',
+                                                fontSize: 24 * ffem,
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xff000000),)
+                                          ),
+                                        ]
+                                    ),
+                                  ),
+                                  elevation: 0,
+                                ),
+
+                                // Next Button
+                                Card(
+                                  color: Color(0xffF0F0F0), // Background color
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(20 * fem),
+                                  ),
+                                  child: Container(
+                                    width: 160.0 * fem,
+                                    height: 100.0 * ffem,
+                                    padding: EdgeInsets.all(10 * fem), // Inner padding of Card
+                                    child: Column(
+                                      mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text('PRESSURE',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito',
+                                                fontSize: 14 * ffem,
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xff9d9d9d),)
+                                          ),
+                                          SizedBox(height: 15),
+                                          Text('$pressureMb mb',
+                                              style: TextStyle(
+                                                fontFamily: 'Nunito',
+                                                fontSize: 24 * ffem,
+                                                fontWeight: FontWeight.w500,
+                                                color: Color(0xff000000),)
+                                          ),
+                                        ]
+                                    ),
+                                  ),
+                                  elevation: 0,
+                                ),
+                              ],
+                            ),
+                          ),
+                          SizedBox(height: 20),
+                          Card(
+                            color: Color(0xffF0F0F0).withOpacity(0.9),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20 * fem),
+                            ),
+                            child: Padding(
+                              padding: EdgeInsets.all(16.0 * fem),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    'Weather Forecast',
+                                    style: TextStyle(
+                                      fontSize: 16 * ffem,
+                                      fontFamily: 'Nunito',
+                                      fontWeight: FontWeight.w500,
+                                      color: Color(0xff000000),
+                                    ),
+                                  ),
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 20 * ffem,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.pushReplacementNamed(
+                                      context, '/WeatherForecast');
+                                      },
+                                  ),
+                                ],
                               ),
                             ),
+                            elevation: 0,
                           ),
                         ],
                       ),
@@ -197,8 +407,9 @@ class _WeatherPageState extends State<WeatherPage> {
         ),
         bottomNavigationBar: SafeArea(
           child: BottomNavigationBar(
-            selectedItemColor: Colors.grey,
-            unselectedItemColor: Colors.grey,
+            backgroundColor: Color(0xFFffffff),
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.black,
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(

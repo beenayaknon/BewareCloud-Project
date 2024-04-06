@@ -137,41 +137,14 @@ class _LoginPageState extends State<LoginPage> {
                       fontFamily: 'Nunito',
                       fontSize: 16 * ffem,
                       fontWeight: FontWeight.w700,
-                      color: Color(0xff000000),
+                      color: Color(0xffffffff),
                     ),
                   ),
                 ),
                 SizedBox(height: 15 * ffem),
-                Center(
-                  // Ensures the text is centered
-                  child: Text(
-                    'Don’t have an account?',
-                    style: TextStyle(
-                      fontFamily: 'Nunito',
-                      fontSize: 14 * ffem,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xffb8b8b8),
-                    ),
-                  ),
-                ),
                 TextButton(
                   onPressed: () {
-                    Navigator.pushReplacementNamed(context, '/register');
-                  },
-                  child: Text(
-                    'Register',
-                    style: TextStyle(
-                      fontFamily: 'Nunito',
-                      fontSize: 16 * ffem,
-                      fontWeight: FontWeight.w600,
-                      color: Color(0xff000000),
-                    ),
-                  ),
-                ),
-                SizedBox(height: 20),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
+                    Navigator.pushReplacementNamed(context, '/');
                   },
                   style: TextButton.styleFrom(
                     backgroundColor: Color(0xffe8e8e8),

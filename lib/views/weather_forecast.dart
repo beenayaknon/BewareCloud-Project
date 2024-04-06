@@ -110,17 +110,47 @@ class _WeatherPageState extends State<WeatherForecast> {
       throw Exception('Failed to load weather forecast data');
     }
   }
-
   @override
   Widget build(BuildContext context) {
+    const double fem = 1.0;
+    const double ffem = 1.0;
     return Scaffold(
+        backgroundColor: Color(0xFFF8FAFB),
         appBar: AppBar(
+          leading: IconButton(
+            icon: Image.asset(
+                'assets/icon/back.png',
+                width:25 * fem,
+                height: 25 * fem,
+                fit: BoxFit.cover
+            ),
+            onPressed: () {
+              Navigator.pushReplacementNamed(context, '/Weather');
+            },
+          ),
           title: Text('Weather Forecast'),
+          titleTextStyle: TextStyle(
+            fontFamily: 'Heebo',
+            fontSize: 32 * ffem,
+            fontWeight: FontWeight.w700,
+            color: Color(0xff000000),
+          ),
+          elevation: 0,
         ),
         body: SingleChildScrollView(
+          padding: EdgeInsets.fromLTRB(40 * fem, 40 * fem, 40 * fem, 0 * fem),
           child: Column(
             children: [
-              Text(_locationInfo),
+              SizedBox(height: 10),
+              Text(_locationInfo,
+                  style: TextStyle(
+                    fontFamily: 'Heebo',
+                    fontSize: 20 * ffem,
+                    fontWeight: FontWeight.w400,
+                    color: Color(0xff000000),
+                  )
+              ),
+              SizedBox(height: 10),
               FutureBuilder<Map<String, dynamic>>(
                 future: fetchWeatherForecast(),
                 builder: (context, snapshot) {
@@ -137,14 +167,20 @@ class _WeatherPageState extends State<WeatherForecast> {
 
                     for (var day in forecastDays) {
                       var date = day['date'];
+                      var temp = day['day']['avgtemp_c'];
                       var maxTemp = day['day']['maxtemp_c'];
                       var minTemp = day['day']['mintemp_c'];
                       var condition = day['day']['condition']['text'];
+                      String iconUrl = day['day']['condition']['icon'];
+
+                      if (!iconUrl.startsWith('http')) {
+                        iconUrl = 'http:$iconUrl';
+                      }
 
                       forecastWidgets.add(
                         Container(
-                          margin: EdgeInsets.all(8.0),
-                          padding: EdgeInsets.all(16.0),
+                          margin: EdgeInsets.only(bottom: 20.0),
+                          padding: EdgeInsets.all(10.0),
                           constraints: BoxConstraints(
                             minHeight:
                                 120.0, // Minimum height: adjust accordingly
@@ -152,26 +188,66 @@ class _WeatherPageState extends State<WeatherForecast> {
                                 .infinity, // Assuming you want to stretch across the width
                           ),
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
+                            color: Color(0xffE7F5FF),
+                            borderRadius: BorderRadius.circular(20),
+                            boxShadow: [ // Add shadow behind each card
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.5),
+                                spreadRadius: 1,
+                                blurRadius: 5,
+                                offset: Offset(0, 3),
+                              ),
+                            ],
                           ),
-                          child: IntrinsicHeight(
-                            // This widget ensures that all children of the column fill up the minimum height provided
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text('$date',
-                                    style: TextStyle(
-                                        fontSize: 18,
-                                        fontWeight: FontWeight.bold)),
-                                Spacer(), // Use Spacer widgets to distribute space evenly
-                                Text('$maxTemp°C/$minTemp°C',
-                                    style: TextStyle(fontSize: 18)),
-                                Spacer(), // Another Spacer
-                                Text('$condition',
-                                    style: TextStyle(fontSize: 20)),
-                              ],
-                            ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      children: [
+                                        SizedBox(width: 10),
+                                        Text('$date',
+                                            style: TextStyle(
+                                                fontSize: 18,
+                                                fontWeight: FontWeight.bold)),
+                                      ],
+                                    ),
+                                    SizedBox(height: 30),
+                                    Row(
+                                      children: [
+                                        Image.network(iconUrl, width: 30, // Set the size as needed
+                                            height: 30,
+                                            fit: BoxFit.cover), // Display weather icon
+                                        SizedBox(width: 5),
+                                        Text('$condition',
+                                            style: TextStyle(fontSize: 20)),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    SizedBox(height: 25),
+                                    Text('$temp°',
+                                        style: TextStyle(
+                                          fontFamily: 'Nunito',
+                                          fontSize: 30 * ffem,
+                                          fontWeight: FontWeight.w600,
+                                          color: Color(0xff000000),)
+                                    ),
+                                    Text('${maxTemp}° / ${minTemp}°',
+                                        style: TextStyle(
+                                          fontFamily: 'Nunito',
+                                          fontSize: 16 * ffem,
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xff000000),)
+                                    ),
+                                  ],
+                                ),
+                            ],
                           ),
                         ),
                       );
@@ -189,10 +265,12 @@ class _WeatherPageState extends State<WeatherForecast> {
             ],
           ),
         ),
+        /*
         bottomNavigationBar: SafeArea(
           child: BottomNavigationBar(
-            selectedItemColor: Colors.grey,
-            unselectedItemColor: Colors.grey,
+            backgroundColor: Color(0xFFffffff),
+            selectedItemColor: Colors.black,
+            unselectedItemColor: Colors.black,
             type: BottomNavigationBarType
                 .fixed, // Ensure all text labels are visible
             items: [
@@ -230,6 +308,8 @@ class _WeatherPageState extends State<WeatherForecast> {
               }
             },
           ),
-        ));
+        )*/
+    );
+
   }
 }

@@ -7,6 +7,7 @@ class Tutorial4Page extends StatelessWidget {
     const double ffem = 1.0;
 
     return Scaffold(
+      backgroundColor: Color(0xFFF8FAFB),
       appBar: AppBar(
         title: Text(
           'Tutorial',

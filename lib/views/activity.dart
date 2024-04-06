@@ -68,9 +68,19 @@ class _ActivityPageState extends State<ActivityPage> {
     final double buttonWidth = MediaQuery.of(context).size.width * 0.8;
     final double buttonHeight = 60.0;
 
+    const double fem = 1.0;
+    const double ffem = 1.0;
+
     return Scaffold(
+      backgroundColor: Color(0xFFF8FAFB),
       appBar: AppBar(
         title: Text('Activity'),
+          titleTextStyle: TextStyle(
+            fontFamily: 'Heebo',
+            fontSize: 34 * ffem,
+            fontWeight: FontWeight.w800,
+            color: Color(0xff000000),
+          ),
       ),
       body: SingleChildScrollView(
         child: Column(
@@ -101,7 +111,7 @@ class _ActivityPageState extends State<ActivityPage> {
               calendarStyle: CalendarStyle(
                 isTodayHighlighted: false,
                 selectedDecoration:
-                    BoxDecoration(color: Colors.purple, shape: BoxShape.circle),
+                    BoxDecoration(color: Color(0xff6F96D1), shape: BoxShape.circle),
               ),
               headerStyle: HeaderStyle(
                 formatButtonVisible: false,
@@ -111,24 +121,47 @@ class _ActivityPageState extends State<ActivityPage> {
                     '${DateFormat.yMMMM(locale).format(date)}',
               ),
             ),
-            SizedBox(height: 10),
-            SizedBox(
-              width: buttonWidth,
-              height: buttonHeight,
-              child: ElevatedButton.icon(
-                icon: Icon(Icons.add),
-                label: Text('Add New Activity'),
-                onPressed: () {
-                  Navigator.pushReplacementNamed(context, '/ActivityAdd');
-                },
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(8.0),
+            SizedBox(height: 20 * ffem),
+            Padding(
+              padding: EdgeInsets.all(16.0 * fem),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text('Activities List',
+                      style: TextStyle(
+                        fontSize: 24 * ffem,
+                        fontFamily: 'Nunito',
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff000000),
+                      )),
+                  Spacer(),
+                  ElevatedButton.icon(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFBAD6EB),
+                      elevation: 2,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      padding: EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+                    ),
+                    icon: Icon(Icons.add,  size: 24, color: Color(0xff000000),
+                    ),
+                    label: Text(
+                      "Add Activity",
+                      style: TextStyle(
+                        fontFamily: 'Nunito',
+                        fontSize: 14 * ffem,
+                        fontWeight: FontWeight.w600,
+                        color: Color(0xff000000),
+                      ),
+                    ),
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(context, '/ActivityAdd');
+                    },
                   ),
-                ),
+                ],
               ),
             ),
-            SizedBox(height: 20),
             FutureBuilder<List<DocumentSnapshot>>(
               future: _getActivities(),
               builder: (context, snapshot) {
@@ -156,30 +189,58 @@ class _ActivityPageState extends State<ActivityPage> {
                             activityData['location'], activityDate),
                         builder: (context, weatherSnapshot) {
                           return Card(
-                            elevation: 4,
-                            margin: EdgeInsets.symmetric(
-                                vertical: 8, horizontal: 16),
-                            child: ListTile(
-                              title: Text(
-                                  activityData['activityName'] ?? 'No Title',
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.bold)),
-                              subtitle: Text(
-                                  '${activityData['location'] ?? 'No Location'} - ${DateFormat('dd/MM/yyyy').format(activityDate)}'),
-                              trailing: Icon(Icons.arrow_forward_ios),
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => ActivityDetailPage(
-                                      activityData: activityData,
-                                      weatherData: weatherSnapshot.data,
-                                      activityId: document.id,
-                                    ),
+                            color: Color(0xffF4F4F4),
+                            margin: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+                            child: Padding(
+                              padding: EdgeInsets.all(16.0 * fem),
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        activityData['activityName'] ?? 'No Title',
+                                        style: TextStyle(
+                                          fontSize: 17 * ffem,
+                                          fontFamily: 'Nunito',
+                                          fontWeight: FontWeight.w500,
+                                          color: Color(0xff000000),
+                                        ),
+                                      ),
+                                      Text(
+                                          '${activityData['location'] ?? 'No Location'} - ${DateFormat('dd/MM/yyyy').format(activityDate)}',
+                                        style: TextStyle(
+                                          fontSize: 14 * ffem,
+                                          fontFamily: 'Nunito',
+                                          fontWeight: FontWeight.w400,
+                                          color: Color(0xff000000),
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                );
-                              },
+                                  IconButton(
+                                    icon: Icon(
+                                      Icons.arrow_forward_ios,
+                                      size: 25 * ffem,
+                                    ),
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) => ActivityDetailPage(
+                                            activityData: activityData,
+                                            weatherData: weatherSnapshot.data,
+                                            activityId: document.id,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  ),
+                                ],
+                              ),
                             ),
+                            elevation: 0,
                           );
                         },
                       );
@@ -193,8 +254,9 @@ class _ActivityPageState extends State<ActivityPage> {
       ),
       bottomNavigationBar: SafeArea(
         child: BottomNavigationBar(
-          selectedItemColor: Colors.grey,
-          unselectedItemColor: Colors.grey,
+          backgroundColor: Color(0xFFffffff),
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.black,
           type: BottomNavigationBarType.fixed,
           items: [
             BottomNavigationBarItem(

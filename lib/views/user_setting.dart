@@ -81,6 +81,7 @@ class UserSettingPage extends StatelessWidget {
       ),
       bottomNavigationBar: SafeArea(
         child: BottomNavigationBar(
+          backgroundColor: Color(0xFFffffff),
           selectedItemColor: Colors.black,
           unselectedItemColor: Colors.black,
           type: BottomNavigationBarType.fixed,

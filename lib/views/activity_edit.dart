@@ -88,19 +88,39 @@ class _ActivityEditPageState extends State<ActivityEditPage> {
 
   @override
   Widget build(BuildContext context) {
+    const double fem = 1.0;
+    const double ffem = 1.0;
+
     return Scaffold(
+      backgroundColor: Color(0xFFF8FAFB),
       appBar: AppBar(
         title: Text('Edit Activity'),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(20.0),
         child: Form(
           key: _formKey,
           child: ListView(
             children: <Widget>[
               TextFormField(
                 controller: _nameController,
-                decoration: InputDecoration(labelText: 'Activity Name'),
+                decoration: InputDecoration(
+                  labelText: 'Activity Name',
+                  prefixIcon: Icon(Icons.label_outline_rounded, size: 30 * fem, color: Colors.black), // Use your custom icon
+                  labelStyle: TextStyle(
+                    fontFamily: 'Heebo',
+                    fontSize: 16 * ffem,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black45, width: 1 * fem),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                  ),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                  ),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an activity name';
@@ -108,9 +128,43 @@ class _ActivityEditPageState extends State<ActivityEditPage> {
                   return null;
                 },
               ),
+              SizedBox(height: 20 * ffem),
+              Container(
+                decoration: BoxDecoration(
+                  border: Border(
+                    bottom: BorderSide(
+                      color: Colors.black45,
+                      width: 1.0,
+                    ),
+                  ),
+                ),
+                child: ListTile(
+                  onTap: () => _selectDate(context),
+                  leading: Icon(Icons.calendar_today, color: Colors.black),
+                  title: Text(
+                      'Selected date: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}'),
+                ),
+              ),
+              SizedBox(height: 20 * ffem),
               TextFormField(
                 controller: _descriptionController,
-                decoration: InputDecoration(labelText: 'Description'),
+                decoration: InputDecoration(
+                  labelText: 'Description',
+                  prefixIcon: Icon(Icons.description_outlined, size: 30 * fem, color: Colors.black),
+                  labelStyle: TextStyle(
+                    fontFamily: 'Heebo',
+                    fontSize: 16 * ffem,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black45, width: 1 * fem),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                  ),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                  ),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a description';
@@ -118,9 +172,26 @@ class _ActivityEditPageState extends State<ActivityEditPage> {
                   return null;
                 },
               ),
+              SizedBox(height: 20 * ffem),
               TextFormField(
                 controller: _locationController,
-                decoration: InputDecoration(labelText: 'Location'),
+                decoration: InputDecoration(
+                  labelText: 'Lacation',
+                  prefixIcon: Icon(Icons.location_on_outlined, size: 30 * fem, color: Colors.black), // Use your custom icon
+                  labelStyle: TextStyle(
+                    fontFamily: 'Heebo',
+                    fontSize: 16 * ffem,
+                  ),
+                  enabledBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Colors.black45, width: 1 * fem),
+                  ),
+                  focusedBorder: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                  ),
+                  border: UnderlineInputBorder(
+                    borderSide: BorderSide(color: Color(0xFF000000), width: 2 * fem),
+                  ),
+                ),
                 validator: (value) {
                   if (value == null || value.isEmpty) {
                     return 'Please enter a location';
@@ -128,25 +199,35 @@ class _ActivityEditPageState extends State<ActivityEditPage> {
                   return null;
                 },
               ),
-              ListTile(
-                title: Text(
-                    'Selected date: ${DateFormat('yyyy-MM-dd').format(_selectedDate)}'),
-                trailing: Icon(Icons.calendar_today),
-                onTap: () => _selectDate(context),
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 16.0),
-                child: ElevatedButton(
-                  onPressed: () => _updateActivity(context),
-                  child: Text('Update Activity'),
+              SizedBox(height: 50 * ffem),
+              TextButton(
+                onPressed: () => _updateActivity(context),
+                style: TextButton.styleFrom(
+                  backgroundColor: Color(0xff18378C),
+                  minimumSize: Size(350.0, 60.0),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(50 * fem),
+                  ),
+                ),
+                child: Text(
+                  'Update Activity',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontFamily: 'Nunito',
+                    fontSize: 16 * ffem,
+                    fontWeight: FontWeight.w600,
+                    color: Color(0xffffffff),
+                  ),
                 ),
               ),
             ],
           ),
         ),
       ),
+      /*
       bottomNavigationBar: SafeArea(
         child: BottomNavigationBar(
+          backgroundColor: Color(0xFFffffff),
           selectedItemColor: Colors.grey,
           unselectedItemColor: Colors.grey,
           type: BottomNavigationBarType.fixed,
@@ -186,6 +267,7 @@ class _ActivityEditPageState extends State<ActivityEditPage> {
           },
         ),
       ),
+      */
     );
   }
 }

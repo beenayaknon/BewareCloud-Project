@@ -164,7 +164,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 ElevatedButton(
                   onPressed: _registerUser,
                   style: TextButton.styleFrom(
-                    backgroundColor: Color(0xffbad6eb),
+                    backgroundColor: Color(0xff18378C),
                     minimumSize: Size(350.0, 60.0),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(50 * fem),
@@ -177,7 +177,7 @@ class _RegisterPageState extends State<RegisterPage> {
                       fontSize: 16 * ffem,
                       fontWeight: FontWeight.w600,
                       height: 1.3625 * ffem / fem,
-                      color: Color(0xff000000),
+                      color: Color(0xffffffff),
                     ),
                   ),
                 ),
