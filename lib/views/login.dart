@@ -23,7 +23,7 @@ class _LoginPageState extends State<LoginPage> {
         // Navigate to home screen or show a success message
         Navigator.pushReplacementNamed(context, '/Home');
       } on FirebaseAuthException catch (e) {
-        var errorMessage = "An error occurred. Please try again.";
+        var errorMessage = "The email or password might be wrong, try again.";
         if (e.code == 'user-not-found') {
           errorMessage = "No user found for that email.";
         } else if (e.code == 'wrong-password') {
