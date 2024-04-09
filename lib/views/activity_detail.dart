@@ -42,25 +42,26 @@ class ActivityDetailPage extends StatelessWidget {
     String displayDate = formatter.format(activityDate);
 
     String weatherInfo = 'No weather forecast data';
+/*
     if (weatherData != null) {
-
       weatherInfo =
-          "${weatherData!['current']['condition']['text']}, Temp: ${weatherData!['current']['temp_c']}°C, Wind: ${weatherData!['current']['wind_kph']} kph, Pressure: ${weatherData!['current']['pressure_mb']} mb, Humidity: ${weatherData!['current']['humidity']}%";
-
+      "${weatherData!['current']['condition']['text']}, "
+          "Temp: ${weatherData!['current']['temp_c']}°C, "
+          "Wind: ${weatherData!['current']['wind_kph']} kph, "
+          "Pressure: ${weatherData!['current']['pressure_mb']} mb, "
+          "Humidity: ${weatherData!['current']['humidity']}%";
     }
-    var location = weatherData?['location']['name'];
-    String condition = weatherData?['current']['condition']['text'] ?? 'Not available';
-    var temp = (weatherData?['current']['temp_c']?.toStringAsFixed(1) ?? '--') + '°';
-    String feelsLike = (weatherData?['current']['feelslike_c']?.toStringAsFixed(1) ?? '--') + '°';
-    String humidity = (weatherData?['current']['humidity']?.toString() ?? '--') + '%';
-    String visibility = (weatherData?['current']['vis_km']?.toString() ?? '--') + ' km';
-    String pressure = (weatherData?['current']['pressure_mb']?.toString() ?? '--') + ' mb';
-    var date = weatherData?['current']['last_updated'];
-    String iconUrl = weatherData?['current']['condition']['icon'];
+*/
+    var condition = weatherData?['current']['condition']['text'] ?? 'Not available';
+    var temp = '${weatherData?['current']['temp_c']?.toString() ?? '--'}°';
+    var feelsLike = '${weatherData?['current']['feelslike_c']?.toString() ?? '--'}°';
+    var humidity = '${weatherData?['current']['humidity']?.toString() ?? '--'}%';
+    var visibility = '${weatherData?['current']['vis_km']?.toString() ?? '--'} km';
+    var pressure = '${weatherData?['current']['pressure_mb']?.toString() ?? '--'} mb';
 
-    if (!iconUrl.startsWith('http')) {
-      iconUrl = 'http:$iconUrl';
-    }
+    String iconUrl = weatherData?['current']['condition']['icon'] ?? '//cdn.weatherapi.com/weather/64x64/day/113.png';
+    iconUrl = iconUrl.startsWith('http') ? iconUrl : 'http:$iconUrl';
+
 
     const double fem = 1.0;
     const double ffem = 1.0;
@@ -123,7 +124,7 @@ class ActivityDetailPage extends StatelessWidget {
                           children: [
                             Icon(Icons.location_on_outlined, color: Color(0xff000000), size: 20 * fem,),
                             SizedBox(width: 5),
-                            Text('$location',
+                            Text('${activityData['location']}',
                                 style: TextStyle(
                                   fontFamily: 'Nunito',
                                   fontSize: 16 * ffem,
@@ -134,7 +135,7 @@ class ActivityDetailPage extends StatelessWidget {
                           ],
                         ),
                         SizedBox(height: 10),
-                        Text('$date',
+                        Text('$displayDate',
                             style: TextStyle(
                               fontFamily: 'Nunito',
                               fontSize: 16 * ffem,
@@ -193,7 +194,7 @@ class ActivityDetailPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20 * fem),
                     ),
                     child: Container(
-                      width: 160.0 * fem,
+                      width: 150.0 * fem,
                       height: 100.0 * ffem,
                       padding: EdgeInsets.all(10 * fem), // Inner padding of Card
                       child: Column(
@@ -230,7 +231,7 @@ class ActivityDetailPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20 * fem),
                     ),
                     child: Container(
-                      width: 160.0 * fem,
+                      width: 150.0 * fem,
                       height: 100.0 * ffem,
                       padding: EdgeInsets.all(10 * fem), // Inner padding of Card
                       child: Column(
@@ -273,7 +274,7 @@ class ActivityDetailPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20 * fem),
                     ),
                     child: Container(
-                      width: 160.0 * fem,
+                      width: 150.0 * fem,
                       height: 100.0 * ffem,
                       padding: EdgeInsets.all(10 * fem), // Inner padding of Card
                       child: Column(
@@ -310,7 +311,7 @@ class ActivityDetailPage extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20 * fem),
                     ),
                     child: Container(
-                      width: 160.0 * fem,
+                      width: 150.0 * fem,
                       height: 100.0 * ffem,
                       padding: EdgeInsets.all(10 * fem), // Inner padding of Card
                       child: Column(
