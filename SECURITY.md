@@ -1,4 +1,4 @@
 # Security Policy
 hahahahahahaha
 vulnerability, disclose
-https://tidelift.com/
+https://www.netflix.com/th-en/
