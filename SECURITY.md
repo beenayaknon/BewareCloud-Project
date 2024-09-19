@@ -1,4 +1,4 @@
 # Security Policy
 hahahahahahaha
-vulnerability
+vulnerability, disclose
 https://tidelift.com/
