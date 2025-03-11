@@ -10,7 +10,7 @@ This is a repository for the BewareCloud project, as a part of ITCS424 Wireless 
 - Ittikorn Suksai
 
 ### Tools used ⚙️
-- Dart
+- Flutter
 - Cloud Firestore
 - [WeatherAPI](https://www.weatherapi.com/) for weather information
 
