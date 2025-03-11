@@ -15,10 +15,10 @@ This is a repository for the BewareCloud project, as a part of ITCS424 Wireless 
 - [WeatherAPI](https://www.weatherapi.com/) for weather information
 
 ### Overview 🌟
-- Login/Register
+- Login/Register feature
   - The users can login or register to save the planning activities.
-- Weather forecast and real-time weather information
-  - Real-time weather information based on current location with 3 dyas weather forecast information are provided.
+- Weather forecast and real-time information
+  - Real-time weather information based on current location with 3 days weather forecast information are provided.
 - Activity planning applying with weather forecast system
   - The users can Add/Edit/Delete activity planned in the calendar.
   - The users can see the details of activity with the weather forecast information on the specific date and location given on the created activity.
